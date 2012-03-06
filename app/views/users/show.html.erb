@@ -1,15 +1,14 @@
 <%= title "Showing User: #{@user.name}" %>
+<%= render 'users/links' %>
 <%= markdown "###{yield(:title)}" %>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<table>
+  <tr>
+    <th class="left">Name</th>
+    <th class="left">Email <em>(Click to Edit)</em></th>
+  </tr>
+  <tr>
+    <td><%= @user.name %></td>
+    <td><%= link_to @user.email, edit_user_path(@user) %></td>
+  </tr>
+</table>

@@ -8,7 +8,12 @@ body {
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
+  padding: .5em;
   line-height: 18px; }
+
+th {
+  padding: .5em;
+}
 
 pre {
   background-color: #eee;

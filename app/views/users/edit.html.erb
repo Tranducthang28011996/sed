@@ -1,8 +1,7 @@
 <%= title "Editing User" %>
+<%= render 'users/links' %>
 <%= markdown "###{yield(:title)}" %>
+<%= markdown "####{link_to @user.name, @user}" %>
 
 <%= render 'form' %>
 <%= render 'password' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
