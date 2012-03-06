@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DSC-SED | <%= yield(:title) || "zomg title is nil" %></title>
+  <%= render 'shared/stylesheets' %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
+  <%= yield %>
+</body>
+</html>
