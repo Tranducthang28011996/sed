@@ -8,6 +8,7 @@ gem 'rails', '3.2.1'
 gem 'mysql2'
 gem 'redcarpet'
 gem 'nokogiri'
+gem 'heroku'
 
 
 # Gems used only for assets and not required
@@ -26,6 +27,10 @@ gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+group :production do
+	gem "pg"
+end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
