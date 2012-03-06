@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   validates :email, :presence => true,
                     :format => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false }
+  validates :password,  :confirmation => true,
+                        :length => { :within => 6..40 },
+                        :on => :create
   validates_presence_of :password, :on => :create
-  validates :password,  :presence => true,
-                        :confirmation => true,
-                        :length => { :within => 6..40 }
 end
+

@@ -8,3 +8,23 @@
 .left {
   text-align:left;
 }
+header {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+#links {
+  clear: left;
+  float: left;
+}
+#current_user {
+  clear: right;
+  float: right;
+}
+#current_user a {
+  font-weight: bold;
+  padding: 0 5px;
+  color: #09c;
+}
+.clear {
+  clear: both;
+}
