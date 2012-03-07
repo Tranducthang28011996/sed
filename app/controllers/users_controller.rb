@@ -32,11 +32,22 @@ class UsersController < ApplicationController
   end
 
   def edit_password
-    @user = User.find_by_id(@current_user.id)
+    @user = User.find_by_id(current_user.id)
   end
 
   def update_password
-    @user = User.find_by_id(@current_user.id)
+    @user = User.find_by_id(current_user.id)
+    if @user.authenticate(params[:user][:current_password])
+      if @user.update_attributes( :password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation] )
+        redirect_to @user, notice: "Password was updated!"
+      else
+        render "edit_password"
+        flash.now[:alert] = "Unable to change password!"
+      end
+    else
+      flash.now[:alert] = "Current User Password was incorrect!"
+      render "edit_password"
+    end
   end
 
   def update
