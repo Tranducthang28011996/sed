@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  #SPEC: 1.1.1: Username(email)
+  #SPEC: 1.1.2: Password
   has_secure_password
   attr_accessible :name, :email, :password, :password_confirmation
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

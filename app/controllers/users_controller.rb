@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authorize
+  #SPEC: 2.1 Student Column
+  #SPEC: 2.1.1 List all students(users)
   def index
     @users = User.all
   end
@@ -8,11 +10,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  #SPEC: 2.1.3 Add a new User(student)
   def new
     @user = User.new
   end
 
+  #SPEC: 1.1.3.2. Edit Login
+  #SPEC: 2.1.5 Edit a users information
   def edit
+    #TODO: make sure they can only edit THEIR login if they're a student
     @user = User.find(params[:id])
   end
 
@@ -34,6 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #SPEC: 2.1.4 Delete a User(student)
   def destroy
     @user = User.find(params[:id])
     @user.destroy
