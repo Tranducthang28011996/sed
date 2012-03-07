@@ -4,6 +4,9 @@ Sed::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :sessions
   resources :users
+  get 'edit_user_password', to: 'users#edit_password'
+  put 'update_user_password', to: 'users#update_password'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

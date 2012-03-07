@@ -31,6 +31,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_password
+    @user = User.find_by_id(@current_user.id)
+  end
+
+  def update_password
+    @user = User.find_by_id(@current_user.id)
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
