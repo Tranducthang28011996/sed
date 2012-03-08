@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :except => [:new, :create]
   #SPEC: 2.1 Student Column
   #SPEC: 2.1.1 List all students(users)
   def index
