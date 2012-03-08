@@ -49,8 +49,19 @@ Sed::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
+  # SMTP stuff
   # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => "simple-sunrise-4473.herokuapp.com" }
+  ActionMailer::Base.smtp_settings = {
+	  :address => "smtp.gmail.com",
+	  :enable_starttls_auto => true,
+	  :port => 587,
+	  :authentication => :plain,
+	  :user_name => "mdhrailsapptest@gmail.com",
+	  :password => 'bba10e70-51f4-11e1-b86c-0800200c9a66'
+  }
+  # end SMTP settings
 
   # Enable threaded mode
   # config.threadsafe!
