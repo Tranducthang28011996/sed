@@ -143,3 +143,8 @@ form {
   margin-bottom: 1em;
   padding: .2em;
 }
+
+em, i {
+  font-style: italic;
+  font-size: .8em;
+}

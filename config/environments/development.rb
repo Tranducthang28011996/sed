@@ -16,6 +16,18 @@ Sed::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
+  # SMTP stuff
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  ActionMailer::Base.smtp_settings = {
+	  :address => "smtp.gmail.com",
+	  :enable_starttls_auto => true,
+	  :port => 587,
+	  :authentication => :plain,
+	  :user_name => "mdhrailsapptest@gmail.com",
+	  :password => 'bba10e70-51f4-11e1-b86c-0800200c9a66'
+  }
+  # end SMTP settings
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 

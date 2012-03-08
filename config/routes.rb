@@ -1,12 +1,12 @@
 Sed::Application.routes.draw do
-
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  resources :sessions
-  resources :users
   get 'edit_user_password', to: 'users#edit_password'
   put 'update_user_password', to: 'users#update_password'
 
+  resources :sessions
+  resources :users
+  resources :password_resets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
