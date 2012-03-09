@@ -1,0 +1,13 @@
+<%= form_for @survey, :html => { :class => "nice_round" }  do |f| %>
+  <%= render "shared/error_messages", :target => @survey %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <%= f.fields_for :questions do |builder| %>
+    <%= render 'question_fields', :f => builder %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

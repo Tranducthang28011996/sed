@@ -1,0 +1,18 @@
+<% title "Surveys" %>
+
+<table>
+  <tr>
+    <th>Name <em>(Click to Show)</em></th>
+    <th>Edit</th>
+    <th>Remove</th>
+  </tr>
+  <% for survey in @surveys %>
+    <tr>
+      <td><%= link_to survey.name, survey %></td>
+      <td><%= link_to "Edit", edit_survey_path(survey) %></td>
+      <td><%= link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Survey", new_survey_path %></p>

@@ -1,4 +1,6 @@
 Sed::Application.routes.draw do
+  resources :surveys
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'edit_user_password', to: 'users#edit_password'

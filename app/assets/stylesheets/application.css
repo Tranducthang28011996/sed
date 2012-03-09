@@ -148,3 +148,6 @@ em, i {
   font-style: italic;
   font-size: .8em;
 }
+div.indent {
+  margin-left: 2em;
+}

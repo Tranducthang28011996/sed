@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'redcarpet'
 gem 'nokogiri'
 gem 'heroku'
+gem 'nifty-generators', :group => :development
 
 
 # Gems used only for assets and not required
@@ -43,3 +44,5 @@ end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem "mocha", :group => :test
