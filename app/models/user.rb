@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :password_confirmation, :on => :create
 
+  #SPEC: 2.1.2: Default ordering A-Za-z
+  default_scope order('users.name ASC')
+
   before_create { generate_token(:auth_token) }
 
   def generate_token(column)

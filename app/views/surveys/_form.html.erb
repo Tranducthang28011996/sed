@@ -2,12 +2,18 @@
   <%= render "shared/error_messages", :target => @survey %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br />
   </div>
+  <div class="field">
   <%= f.fields_for :questions do |builder| %>
     <%= render 'question_fields', :f => builder %>
   <% end %>
+  </div>
   <div class="actions">
+    <p>
+    <% #SPEC: 2.2.10 : Adding a new questions to a Survey(form) %>
+      <%= link_to_add_fields "Add Question", f, :questions %>
+    </p>
     <%= f.submit "Submit" %>
   </div>
 <% end %>

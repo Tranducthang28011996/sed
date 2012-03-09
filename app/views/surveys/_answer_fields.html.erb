@@ -1,6 +1,6 @@
-<div class="field indent">
+<div class="fields indent">
   <%= f.label :content, "Answer" %><br />
   <%= f.text_field :content %>
-  <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove" %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to_remove_fields "remove", f %>
 </div>

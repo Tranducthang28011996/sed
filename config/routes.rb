@@ -6,6 +6,9 @@ Sed::Application.routes.draw do
   get 'edit_user_password', to: 'users#edit_password'
   put 'update_user_password', to: 'users#update_password'
 
+  get 'edit_my_details', to: 'users#edit_my_details'
+  put 'update_my_details', to: 'users#update_my_details'
+
   resources :sessions
   resources :users
   resources :password_resets

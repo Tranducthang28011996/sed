@@ -7,6 +7,7 @@ class SurveysController < ApplicationController
     @survey = Survey.find(params[:id])
   end
 
+  #SPEC: 2.2.2: Adding a new Survey(form)
   def new
     @survey = Survey.new
     3.times do
@@ -15,6 +16,7 @@ class SurveysController < ApplicationController
     end
   end
 
+  #SPEC: 2.2.5: Create a new Survey(form)
   def create
     @survey = Survey.new(params[:survey])
     if @survey.save
@@ -24,10 +26,12 @@ class SurveysController < ApplicationController
     end
   end
 
+  #SPEC: 2.2.4: Edit an existing Survey(form)
   def edit
     @survey = Survey.find(params[:id])
   end
 
+  #SPEC: 2.2.7: Update the DB with the new Survey(form)
   def update
     @survey = Survey.find(params[:id])
     if @survey.update_attributes(params[:survey])
@@ -37,6 +41,8 @@ class SurveysController < ApplicationController
     end
   end
 
+  #SPEC: 2.2.3: Removing an existing Survey(form)
+  #SPEC: 2.2.9: Destroy an existing Survey(form)
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy

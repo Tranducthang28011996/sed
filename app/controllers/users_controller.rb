@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  #SPEC: 1.1.3.2. Edit Login
   #SPEC: 2.1.5 Edit a users information
   def edit
     #TODO: make sure they can only edit THEIR login if they're a student
@@ -31,6 +30,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #SPEC: 1.1.3.2. Edit Login
   def edit_password
     @user = User.find_by_id(current_user.id)
   end
@@ -47,6 +47,20 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = "Current User Password was incorrect!"
       render "edit_password"
+    end
+  end
+
+  #SPEC: 1.1.3.2.1 Edit Only Their Own Details
+  def edit_my_details
+    @user = User.find_by_id(current_user.id)
+  end
+
+  def update_my_details
+    @user = User.find_by_id(current_user.id)
+    if @user.update_attributes(params[:user])
+      redirect_to @user, notice: 'Your information has been updated.'
+    else
+      render "edit_my_details"
     end
   end
 
