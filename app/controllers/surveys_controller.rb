@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  before_filter :authorize
   def index
     @surveys = Survey.all
   end
