@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   #SPEC: 1.1.1: Username(email)
   #SPEC: 1.1.2: Password
   has_secure_password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :email_confirmed
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, :presence => true, :length => { :maximum => 50 }
   validates :email, :presence => true,
@@ -29,6 +29,13 @@ class User < ActiveRecord::Base
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
+  end
+
+  #SPEC: 1.1.3.3: Email Confirmation
+  def send_email_confirm
+    generate_token(:email_confirm_token)
+    save!
+    UserMailer.email_confirm(self).deliver
   end
 end
 

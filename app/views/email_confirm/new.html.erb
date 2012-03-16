@@ -1,0 +1,12 @@
+<%= title "Email Confirmation" %>
+<%= markdown "###{yield(:title)}" %>
+<%= form_tag email_confirm_index_path, :class => "nice_round", :method => :post do %>
+  <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, current_user.email, :size => "40" %><br />
+      <em>(You will receive an email containing instructions on how to confirm your email address.)</em><br />
+  </div>
+  <div class="actions">
+    <%= submit_tag "Send Confirmation" %>
+  </div>
+<% end %>

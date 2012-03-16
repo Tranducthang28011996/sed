@@ -7,6 +7,11 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
+    <% unless current_user.email_confirmed? %>
+      <%= link_to "Confirm Email Address", new_email_confirm_path %>
+    <% else %>
+      <%= f.label "Confirmed!" %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit "Update My Details" %>

@@ -8,6 +8,11 @@ class UserMailer < ActionMailer::Base
   #
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => "DSC-SED: Password Reset Instructions"
+    mail :to => user.email, :subject => "DSC-SED: Password Reset Instructions."
+  end
+
+  def email_confirm(user)
+    @user = user
+    mail :to => user.email, :subject => "DSC-SED: Email Confirmation."
   end
 end
