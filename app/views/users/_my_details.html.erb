@@ -7,11 +7,7 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
-    <% unless current_user.email_confirmed? %>
-      <%= link_to "Confirm Email Address", new_email_confirm_path %>
-    <% else %>
-      <%= f.label "Confirmed!" %>
-    <% end %>
+    <%= render 'email_confirmed' %>
   </div>
   <%= render 'roles' %>
   <div class="actions">

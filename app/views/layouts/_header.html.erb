@@ -3,17 +3,21 @@
     <div id="menu_links">
       <ul>
         <li><%= link_to "Home", root_path %></li>
-        <% if current_user %>
+        <% if can? :manage, User %>
           <li><%= link_to "Users", users_path %></li>
+        <% end %>
+        <% if can? :manage, Survey %>
           <li><%= link_to "Surveys", surveys_path %></li>
         <% end %>
       </ul>
     </div>
     <div id="current_user">
       <% if current_user %>
-        <%= link_to "Change My Details", edit_my_details_path %> |
-        <%= link_to "Change Password", edit_user_password_path %> |
-        Logged in as <%= current_user.name %>. <%= link_to "Log Out", logout_path %>
+        Logged in as 
+        <% if can? :read, User, :id => current_user.id %>
+          <%= link_to current_user.name, current_user %>. 
+        <% end %>
+        <%= link_to "Log Out", logout_path %>
       <% else %>
         <%= link_to "Log In", login_path %>
       <% end %>

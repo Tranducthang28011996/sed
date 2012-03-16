@@ -1,7 +1,17 @@
 <nav class="round short">
   <ul>
-    <li><%= link_to "Users Index", users_path %></li>
-    <li><%= link_to "Create New User", new_user_path %></li>
+    <% if can? :manage, @user %>
+      <li><%= link_to "Users Index", users_path %></li>
+    <% end %>
+    <% if can? :create, @user %>
+      <li><%= link_to "Create New User", new_user_path %></li>
+    <% end %>
+    <% if can? :edit_my_details, @user %>
+      <li><%= link_to "Change My Details", edit_my_details_path %> | </li>
+    <% end %>
+    <% if can? :edit_password, @user %>
+      <li><%= link_to "Change Password", edit_user_password_path %></li>
+    <% end %>
   </ul>
 </nav>
 <div class="clear"></div>

@@ -1,6 +1,5 @@
 <%= title "Editing User" %>
 <%= render 'users/links' %>
 <%= markdown "###{yield(:title)}" %>
-<%= markdown "####{link_to @user.name, @user}" %>
 
 <%= render 'form' %>

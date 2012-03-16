@@ -1,3 +1,4 @@
+<% if can? :assign_roles, @user %>
 <div class="field">
   <%= label_tag :roles %><br />
   <% for role in User::ROLES %>
@@ -6,3 +7,4 @@
   <% end %>
   <%= hidden_field_tag "user[roles][]", "" %>
 </div>
+<% end %>

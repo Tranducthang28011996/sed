@@ -1,2 +1,5 @@
 <%= title "Home" %>
 <p>Dixie Secondary Education Department</p>
+<% if can? :read, @user %>
+  <%= link_to "Users Index", users_path %>
+<% end %>

@@ -54,5 +54,9 @@ class User < ActiveRecord::Base
   def role_symbols
     roles.map(&:to_sym)
   end
+
+  def role?(role)
+    roles.include? role.to_s
+  end
 end
 

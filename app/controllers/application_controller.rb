@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "You do not have permission to do that!"
+    redirect_to error_path
+  end
+
   private
 
   def current_user
