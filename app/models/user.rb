@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   #SPEC: 1.1.1: Username(email)
   #SPEC: 1.1.2: Password
   has_secure_password
-  attr_accessible :name, :email, :password, :password_confirmation, :email_confirmed
+  attr_accessible :name, :email, :password, :password_confirmation, :email_confirmed, :roles
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, :presence => true, :length => { :maximum => 50 }
   validates :email, :presence => true,
@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
                         :on => :create
   validates_presence_of :password, :on => :create
   validates_presence_of :password_confirmation, :on => :create
+
+  #ROLES
+  ROLES = %w[student advisor professor god]
+  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0 "} }
 
   #SPEC: 2.1.2: Default ordering A-Za-z
   default_scope order('users.name ASC')
@@ -36,6 +40,19 @@ class User < ActiveRecord::Base
     generate_token(:email_confirm_token)
     save!
     UserMailer.email_confirm(self).deliver
+  end
+
+  #Roles
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  end
+
+  def roles
+    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
+  end
+
+  def role_symbols
+    roles.map(&:to_sym)
   end
 end
 

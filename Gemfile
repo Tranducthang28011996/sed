@@ -10,6 +10,7 @@ gem 'redcarpet'
 gem 'nokogiri'
 gem 'heroku'
 gem 'nifty-generators', :group => :development
+gem 'cancan'
 
 
 # Gems used only for assets and not required
