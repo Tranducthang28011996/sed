@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  roles:
+    description:
+      god: "You have all power over the application. There is nothing you can't do."

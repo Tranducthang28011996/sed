@@ -266,3 +266,27 @@ table {
 th, td {
   padding: .5em;
 }
+
+/* line 13, ../../app/assets/stylesheets/users.css.scss */
+.god {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 80%;
+  background-color: red;
+  padding: 0.4em;
+  color: white;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* line 24, ../../app/assets/stylesheets/users.css.scss */
+.student {
+  background-color: green;
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 80%;
+  padding: 0.4em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

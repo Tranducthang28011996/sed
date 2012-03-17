@@ -14,6 +14,7 @@ class Ability
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
       can :update_my_details, User, :id => user.id
+      #TODO: remove the line below!!!
       can :assign_roles, User
     else
       #guest shit

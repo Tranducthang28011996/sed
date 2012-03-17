@@ -1,5 +1,9 @@
-<% unless current_user.email_confirmed? %>
-  <%= link_to "Confirm Email Address", new_email_confirm_path %>
+<% unless @user.email_confirmed? %>
+  <% unless @user.new_record? %>
+    <%= link_to "Confirm Email Address", new_email_confirm_path %>
+  <% end %>
 <% else %>
-  <%= label_tag "Confirmed!" %>
+  <% unless @user.new_record? %>
+    <%= label_tag "Confirmed!" %>
+  <% end %>
 <% end %>
