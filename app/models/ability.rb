@@ -23,6 +23,17 @@ class Ability
       cannot :list, :gods
       cannot :destroy, User
       cannot :assign_roles, User
+    elsif user.role? :professor
+      # --------------------------------------------------
+      can :index, User, :id => user.id
+      can :manage, User, :id => user.id
+      can :index, User, :roles_mask => [1]
+      can :list, :students
+      can :list, :advisors
+      can :list, :professors
+      cannot :assign_roles, User
+      can :destroy, User, :id => user.id
+      # --------------------------------------------------
     elsif user.role? :god
       can :manage, :all
       can :assign_roles, User
