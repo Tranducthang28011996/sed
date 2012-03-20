@@ -1,39 +1,121 @@
 class UsersController < ApplicationController
-#before_filter :authorize
-  #load_and_authorize_resource
   authorize_resource
   #SPEC: 2.1 Student Column
   #SPEC: 2.1.1 List all students(users)
+  #SPEC: 3.1.2 Sorting options
   def index
     #SPEC: 3.1.1 List all students(users)
     if params[:roles_mask] == '1'
-      if params[:sort] == "name"
+      if params[:sort] == "email"
+        if params[:asc] == '1'
+          @users = User.students.order("email ASC")
+          authorize! :list, :students
+        elsif params[:asc] == '0'
+          @users = User.students.order("email DESC")
+          authorize! :list, :students
+        end #end asc/desc check
+      elsif params[:sort] == "name"
         if params[:asc] == '1'
           @users = User.students.order("name ASC")
           authorize! :list, :students
         elsif params[:asc] == '0'
           @users = User.students.order("name DESC")
           authorize! :list, :students
-        else
-          @users = User.students
-          authorize! :list, :students
-        end
+        end #end asc/desc check
       else
-        @users = User.students
+        #default ordering
+        @users = User.students.order("name ASC")
         authorize! :list, :students
-      end #end sort by name
+      end
     elsif params[:roles_mask] == '2'
-      @users = User.advisors
-      authorize! :list, :advisors
+      if params[:sort] == "email"
+        if params[:asc] == '1'
+          @users = User.advisors.order("email ASC")
+          authorize! :list, :advisors
+        elsif params[:asc] == '0'
+          @users = User.advisors.order("email DESC")
+          authorize! :list, :advisors
+        end #end asc/desc check
+      elsif params[:sort] == "name"
+        if params[:asc] == '1'
+          @users = User.advisors.order("name ASC")
+          authorize! :list, :advisors
+        elsif params[:asc] == '0'
+          @users = User.advisors.order("name DESC")
+          authorize! :list, :advisors
+        end #end asc/desc check
+      else
+        #default ordering
+        @users = User.advisors.order("name ASC")
+        authorize! :list, :advisors
+      end
+    #insert here
     elsif params[:roles_mask] == '4'
-      @users = User.professors
-      authorize! :list, :professors
+      if params[:sort] == "email"
+        if params[:asc] == '1'
+          @users = User.professors.order("email ASC")
+          authorize! :list, :professors
+        elsif params[:asc] == '0'
+          @users = User.professors.order("email DESC")
+          authorize! :list, :professors
+        end #end asc/desc check
+      elsif params[:sort] == "name"
+        if params[:asc] == '1'
+          @users = User.professors.order("name ASC")
+          authorize! :list, :professors
+        elsif params[:asc] == '0'
+          @users = User.professors.order("name DESC")
+          authorize! :list, :professors
+        end #end asc/desc check
+      else
+        #default ordering
+        @users = User.professors.order("name ASC")
+        authorize! :list, :professors
+      end
+    #insert here
     elsif params[:roles_mask] == '8'
-      @users = User.gods
-      authorize! :list, :gods
+      if params[:sort] == "email"
+        if params[:asc] == '1'
+          @users = User.gods.order("email ASC")
+          authorize! :list, :gods
+        elsif params[:asc] == '0'
+          @users = User.gods.order("email DESC")
+          authorize! :list, :gods
+        end #end asc/desc check
+      elsif params[:sort] == "name"
+        if params[:asc] == '1'
+          @users = User.gods.order("name ASC")
+          authorize! :list, :gods
+        elsif params[:asc] == '0'
+          @users = User.gods.order("name DESC")
+          authorize! :list, :gods
+        end #end asc/desc check
+      else
+        #default ordering
+        @users = User.gods.order("name ASC")
+        authorize! :list, :gods
+      end
     else
-      @users = User.where("roles_mask < 4")
-      authorize! :manage, User
+      if params[:sort] == "name"
+        if params[:asc] == '1'
+          @users = User.where("roles_mask < 4").order("name ASC")
+          authorize! :manage, User
+        elsif params[:asc] == '0'
+          @users = User.where("roles_mask < 4").order("name DESC")
+          authorize! :manage, User
+        end #end asc/desc
+      elsif params[:sort] == "email"
+        if params[:asc] == '1'
+          @users = User.where("roles_mask < 4").order("email ASC")
+          authorize! :manage, User
+        elsif params[:asc] == '0'
+          @users = User.where("roles_mask < 4").order("email DESC")
+          authorize! :manage, User
+        end #end asc/desc
+      else
+        @users = User.where("roles_mask < 4")
+        authorize! :manage, User
+      end #end sort by name/email
     end
   end
 

@@ -21,8 +21,7 @@ class User < ActiveRecord::Base
   scope :professors, lambda { with_role("professor") }
   scope :gods, lambda { with_role("god") }
 
-  #SPEC: 2.1.2: Default ordering A-Za-z
-  default_scope order('users.name ASC')
+  #default_scope order('users.name ASC')
 
   before_create { generate_token(:auth_token) }
 
