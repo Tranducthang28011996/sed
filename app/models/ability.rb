@@ -5,13 +5,14 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.role? :student
       can :read, User, :id => user.id
+      can :edit_my_details, User, :id => user.id
+      can :update_my_details, User, :id => user.id
       can :edit, User, :id => user.id
       can :update, User, :id => user.id
-      can :edit_my_details, User, :id => user.id
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
-      can :update_my_details, User, :id => user.id
       cannot :assign_roles, User
+      cannot :destroy, User
       cannot :list, :students
     elsif user.role? :advisor
       can :manage, User, :roles_mask => 1..2

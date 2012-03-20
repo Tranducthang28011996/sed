@@ -121,7 +121,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    authorize! :manage, User
+    authorize! :read, @user, :id => current_user.id
   end
 
   #SPEC: 2.1.3 Add a new User(student)
@@ -134,7 +134,7 @@ class UsersController < ApplicationController
   def edit
     #TODO: make sure they can only edit THEIR login if they're a student
     @user = User.find(params[:id])
-    authorize! :manage, User
+    authorize! :edit, @user, :id => current_user.id
   end
 
   def create
@@ -150,12 +150,12 @@ class UsersController < ApplicationController
   #SPEC: 1.1.3.2. Edit Login
   def edit_password
     @user = User.find_by_id(current_user.id)
-    authorize! :edit_password, User
+    authorize! :edit_password, User, :id => current_user.id
   end
 
   def update_password
     @user = User.find_by_id(current_user.id)
-    authorize! :update_password, User
+    authorize! :update_password, User, :id => current_user.id
     if @user.authenticate(params[:user][:current_password])
       if @user.update_attributes( :password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation] )
         redirect_to @user, notice: "Password was updated!"
@@ -177,7 +177,7 @@ class UsersController < ApplicationController
 
   def update_my_details
     @user = User.find_by_id(current_user.id)
-    authorize! :update_my_details, User
+    authorize! :update_my_details, User, :id => current_user.id
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'Your information has been updated.'
     else
@@ -189,7 +189,7 @@ class UsersController < ApplicationController
   def update
     authorize! :assign_roles, @user if params[:user][:assign_roles]
     @user = User.find(params[:id])
-    authorize! :manage, User
+    authorize! :update, @user, :id => current_user.id
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.'
     else
