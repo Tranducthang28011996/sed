@@ -4,9 +4,11 @@
       <% for role in current_user.roles %>
         <%= content_tag(:div, "", :class => "#{role.to_s.humanize.downcase}") do %>
         <p>
-          Hello <%= current_user.name %>. Your current role is: <%= "#{role.to_s.humanize}" %>
+          Hello <%= current_user.name %>.
           <% if current_user.role? :god %>
             <%= render :partial => 'shared/god_links' %>
+          <% elsif current_user.role? :student %>
+            <%= render :partial => 'shared/student_links' %>
           <% end %>
         </p>
         <% end %>

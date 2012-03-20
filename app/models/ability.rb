@@ -3,10 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.role? :god
-      can :manage, :all
-      can :assign_roles, User
-    elsif user.role? :student
+    if user.role? :student
       can :read, User, :id => user.id
       can :edit, User, :id => user.id
       can :update, User, :id => user.id
@@ -14,7 +11,11 @@ class Ability
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
       can :update_my_details, User, :id => user.id
-      #TODO: remove the line below!!!
+    elsif user.role? :advisor
+      can :manage, User
+      cannot :destroy, User
+    elsif user.role? :god
+      can :manage, :all
       can :assign_roles, User
     else
       #guest shit

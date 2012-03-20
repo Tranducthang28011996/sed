@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   #ROLES
   ROLES = %w[student advisor professor god]
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0 "} }
+  scope :students, lambda { with_role("student") }
+  scope :advisors, lambda { with_role("advisor") }
+  scope :professors, lambda { with_role("professor") }
+  scope :god, lambda { with_role("god") }
 
   #SPEC: 2.1.2: Default ordering A-Za-z
   default_scope order('users.name ASC')

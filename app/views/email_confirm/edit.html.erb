@@ -1,4 +1,4 @@
-<%= title "Confirm Password" %>
+<%= title "Confirm Email" %>
 <%= markdown "###{yield(:title)}" %>
 <%= form_for @user, :url => email_confirm_path(params[:id]) do |f| %>
   <%= render "shared/error_messages", :target => @user %>

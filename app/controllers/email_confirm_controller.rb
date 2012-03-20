@@ -1,5 +1,6 @@
 class EmailConfirmController < ApplicationController
   def new
+    @user = User.find_by_auth_token(params[:auth_token])
   end
 
   def create

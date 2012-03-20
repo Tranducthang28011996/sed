@@ -6,3 +6,6 @@ en:
   roles:
     description:
       god: "You have all power over the application. There is nothing you can't do."
+      student: "You are a Student."
+      advisor: "You are an Advisor."
+      professor: "You are a Professor."
