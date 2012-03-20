@@ -4,13 +4,32 @@ class UsersController < ApplicationController
   #SPEC: 2.1 Student Column
   #SPEC: 2.1.1 List all students(users)
   def index
+    #SPEC: 3.1.1 List all students(users)
+    authorize! :list, :students
+    if params[:roles_mask] == '1'
+      @users = User.students
+    elsif params[:roles_mask] == '2'
+      authorize! :list, :advisors
+      @users = User.advisors
+    elsif params[:roles_mask] == '4'
+      authorize! :list, :professors
+      @users = User.professors
+    elsif params[:roles_mask] == '8'
+      authorize! :list, :gods
+      @users = User.gods
+    else
+      authorize! :manage, User
+    end
   end
 
   def show
+    authorize! :read, User
   end
 
   #SPEC: 2.1.3 Add a new User(student)
   def new
+    @user = User.new
+    authorize! :manage, User
   end
 
   #SPEC: 2.1.5 Edit a users information
@@ -60,6 +79,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #SPEC: 3.1.3 Update Student Status
   def update
     authorize! :assign_roles, @user if params[:user][:assign_roles]
     if @user.update_attributes(params[:user])

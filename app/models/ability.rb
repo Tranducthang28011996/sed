@@ -11,14 +11,27 @@ class Ability
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
       can :update_my_details, User, :id => user.id
+      cannot :assign_roles, User
+      cannot :list, :students
     elsif user.role? :advisor
-      can :manage, User
+      can :manage, User, :roles_mask => 1..2
+      can :create, User
+      can :list, :students
+      can :list, :advisors
+      cannot :list, :professors
+      cannot :list, :gods
       cannot :destroy, User
+      cannot :assign_roles, User
     elsif user.role? :god
       can :manage, :all
       can :assign_roles, User
+      can :list, :students
+      can :list, :advisors
+      can :list, :professors
+      can :list, :gods
     else
       #guest shit
+      cannot :manage, :all
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -2,32 +2,77 @@
 <%= render 'users/links' %>
 <nav class="nice_round" id="users-sort-links">
   <ul>
-    <% if can? :list_students, User.with_role(:student) %>
+    <% if can? :list, :students %>
       <li><%= link_to "Show Students", users_path(:roles_mask => '1') %></li>
+    <% end %>
+    <% if can? :list, :advisors %>
+      <li><%= link_to "Show Advisors", users_path(:roles_mask => '2') %></li>
+    <% end %>
+    <% if can? :list, :professors %>
+      <li><%= link_to "Show Professors", users_path(:roles_mask => '4') %></li>
+    <% end %>
+    <% if can? :list, :gods %>
+      <li><%= link_to "Show Gods", users_path(:roles_mask => '8') %></li>
     <% end %>
   </ul>
 </nav>
 <%= markdown "###{yield(:title)}" %>
+<% if params[:roles_mask] == '1' %>
+  <%= markdown "### Current Mode: Student" %>
+<% elsif params[:roles_mask] == '2' %>
+  <%= markdown "### Current Mode: Advisor" %>
+<% elsif params[:roles_mask] == '4' %>
+  <%= markdown "### Current Mode: Professor" %>
+<% elsif params[:roles_mask] == '8' %>
+  <%= markdown "### Current Mode: God" %>
+<% else %>
+  <%= markdown "### Current Mode: All" %>
+<% end %>
+<% if params[:asc] == 'false' %>
+  <%= markdown "###Descending" %>
+<% elsif params[:asc] == 'true' %>
+  <%= markdown "###Ascending" %>
+<% end %>
+
 
 <% if @users.count > 0 %>
   <table class="round">
     <tr>
-      <th>Name <em>(Click to Show)</em></th>
-      <th>Email <em>(Click to Edit)</em></th>
+      <th>
+        Name <em>(Click to Show)</em>
+        <%= link_to "Asc", users_path(:roles_mask => params[:roles_mask], :sort => :name, :asc => '1') %>
+        <%= link_to "Desc", users_path(:roles_mask => params[:roles_mask], :sort => :name, :asc => '0') %>
+      </th>
+      <th>
+        Email <em>(Click to Edit)</em>
+        <%= link_to "Asc", users_path(:roles_mask => params[:roles_mask], :sort => :email, :asc => '1') %>
+        <%= link_to "Desc", users_path(:roles_mask => params[:roles_mask], :sort => :email, :asc => '0') %>
+      </th>
+      <th>Destroyable?</th>
+      <th>Roles</th>
       <th></th>
     </tr>
 
   <% @users.each do |user| %>
     <tr>
-      <% if can? :read, User %>
-        <td><%= link_to user.name, user %></td>
-      <% end %>
-      <% if can? :edit, User %>
-        <td><%= link_to user.email, edit_user_path(user) %></td>
-      <% end %>
-      <% if can? :destroy, User %>
-        <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-      <% end %>
+      <td>
+        <% if can? :read, User %>
+          <%= link_to user.name, user %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :edit, User %>
+          <%= link_to user.email, edit_user_path(user) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, User %>
+          <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %>
+        <% end %>
+      </td>
+      <td>
+        <%= user.roles.to_s.humanize.downcase %>
+      </td>
     </tr>
   <% end %>
   </table>

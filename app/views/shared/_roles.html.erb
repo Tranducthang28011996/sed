@@ -9,6 +9,10 @@
             <%= render :partial => 'shared/god_links' %>
           <% elsif current_user.role? :student %>
             <%= render :partial => 'shared/student_links' %>
+          <% elsif current_user.role? :advisor %>
+            <%= render :partial => 'shared/advisor_links' %>
+          <% elsif current_user.role? :professor %>
+            <%= render :partial => 'shared/professor_links' %>
           <% end %>
         </p>
         <% end %>

@@ -1,9 +1,9 @@
 <nav class="round short">
   <ul>
-    <% if can? :manage, User %>
+    <% if can? :read, User %>
       <li><%= link_to "Users Index", users_path %></li>
     <% end %>
-    <% if can? :create, User %>
+    <% if can? :manage, User %>
       <li><%= link_to "Create New User", new_user_path %></li>
     <% end %>
     <% if can? :edit_my_details, User %>

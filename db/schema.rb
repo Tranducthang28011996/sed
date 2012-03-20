@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316205803) do
+ActiveRecord::Schema.define(:version => 20120320040228) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120316205803) do
     t.datetime "password_reset_sent_at"
     t.string   "email_confirm_token"
     t.boolean  "email_confirmed",        :default => false
-    t.integer  "roles_mask"
+    t.integer  "roles_mask",             :default => 1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

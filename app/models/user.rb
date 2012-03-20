@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   scope :students, lambda { with_role("student") }
   scope :advisors, lambda { with_role("advisor") }
   scope :professors, lambda { with_role("professor") }
-  scope :god, lambda { with_role("god") }
+  scope :gods, lambda { with_role("god") }
 
   #SPEC: 2.1.2: Default ordering A-Za-z
   default_scope order('users.name ASC')
