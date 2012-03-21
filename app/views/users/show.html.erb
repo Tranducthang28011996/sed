@@ -6,9 +6,13 @@
   <tr>
     <th class="left">Name</th>
     <th class="left">Email <em>(Click to Edit)</em></th>
+    <th class="left">Roles</th>
   </tr>
   <tr>
     <td><%= @user.name %></td>
     <td><%= link_to @user.email, edit_user_path(@user) %></td>
+    <td>
+      <%= @user.roles.to_s.humanize.downcase %>
+    </td>
   </tr>
 </table>

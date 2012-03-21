@@ -56,17 +56,17 @@
   <% @users.each do |user| %>
     <tr>
       <td>
-        <% if can? :read, User %>
+        <% if can? :index, user %>
           <%= link_to user.name, user %>
         <% end %>
       </td>
       <td>
-        <% if can? :edit, User %>
+        <% if can? :index, user %>
           <%= link_to user.email, edit_user_path(user) %>
         <% end %>
       </td>
       <td>
-        <% if can? :destroy, User %>
+        <% if can? :destroy, user %>
           <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %>
         <% end %>
       </td>

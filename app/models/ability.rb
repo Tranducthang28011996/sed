@@ -15,24 +15,30 @@ class Ability
       cannot :destroy, User
       cannot :list, :students
     elsif user.role? :advisor
-      can :manage, User, :roles_mask => 1..2
-      can :create, User
+      can [:read, :show, :edit, :update], User, :id => user.id, :roles_mask => user.roles_mask
+      cannot :destroy, User, :id => user.id, :roles_mask => user.roles_mask
+      can [:read, :show, :edit, :update], User, :roles_mask => 1..2
+      can :index, User, :roles_mask => 1..2
       can :list, :students
       can :list, :advisors
       cannot :list, :professors
       cannot :list, :gods
+      can :manage, User, :roles_mask => 1..2
+      can :create, User
       cannot :destroy, User
       cannot :assign_roles, User
     elsif user.role? :professor
       # --------------------------------------------------
-      can :index, User, :id => user.id
-      can :manage, User, :id => user.id
-      can :index, User, :roles_mask => [1]
+      can [:read, :show, :edit, :update], User, :id => user.id, :roles_mask => user.roles_mask
+      cannot :destroy, User, :id => user.id, :roles_mask => user.roles_mask
+      can [:read, :show, :edit, :update], User, :roles_mask => 1..4
+      can :index, User, :roles_mask => 1..4
+      can :destroy, User, :roles_mask => 1
       can :list, :students
-      can :list, :advisors
-      can :list, :professors
-      cannot :assign_roles, User
-      can :destroy, User, :id => user.id
+      #can :list, :advisors
+      #can :list, :professors
+      #cannot :assign_roles, User
+      #can :destroy, User, :id => user.id
       # --------------------------------------------------
     elsif user.role? :god
       can :manage, :all
