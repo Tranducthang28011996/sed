@@ -39,6 +39,7 @@ class Ability
       can :create, User
       can :destroy, User, :roles_mask => 1..2
       can :assign_roles, User
+      can :manage, Survey
       # --------------------------------------------------
     elsif user.role? :god
       can :manage, :all

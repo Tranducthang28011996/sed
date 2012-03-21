@@ -11,7 +11,7 @@ Sed::Application.routes.draw do
   resources :sessions
   resources :users
   resources :password_resets
-  resources :email_confirm
+  resources :email_confirm, :except => [:index]
   resources :surveys
 
   # The priority is based upon order of creation:

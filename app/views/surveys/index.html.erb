@@ -2,7 +2,7 @@
 <%= render 'surveys/links' %>
 
 <%= markdown "###{yield(:title)}" %>
-<table>
+<table class="nice_round">
   <tr>
     <th>Name <em>(Click to Show)</em></th>
     <th>Edit</th>
@@ -16,7 +16,7 @@
         <% end %>
       </td>
       <td>
-        <% if can? :edit, survey %>
+        <% if can? :index, survey %>
           <%= link_to "Edit", edit_survey_path(survey) %>
         <% end %>
       </td>
