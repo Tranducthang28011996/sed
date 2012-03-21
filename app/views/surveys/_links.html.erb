@@ -1,0 +1,11 @@
+<nav class="round short">
+  <ul>
+    <% if can? :index, Survey %>
+      <li><%= link_to "Survey Index", surveys_path %></li>
+    <% end %>
+    <% if can? :create, Survey %>
+      <li><%= link_to "New Survey", new_survey_path %></li>
+    <% end %>
+  </ul>
+</nav>
+<div class="clear"></div>

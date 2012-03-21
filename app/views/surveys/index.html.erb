@@ -1,19 +1,31 @@
 <% title "Listing Surveys" %>
-<%= markdown "###{yield(:title)}" %>
+<%= render 'surveys/links' %>
 
+<%= markdown "###{yield(:title)}" %>
 <table>
   <tr>
     <th>Name <em>(Click to Show)</em></th>
     <th>Edit</th>
-    <th>Remove</th>
+    <th>Destroy?</th>
   </tr>
   <% for survey in @surveys %>
     <tr>
-      <td><%= link_to survey.name, survey %></td>
-      <td><%= link_to "Edit", edit_survey_path(survey) %></td>
-      <td><%= link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td>
+        <% if can? :index, survey %>
+          <%= link_to survey.name, survey %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :edit, survey %>
+          <%= link_to "Edit", edit_survey_path(survey) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, survey %>
+          <%= link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Survey", new_survey_path %></p>

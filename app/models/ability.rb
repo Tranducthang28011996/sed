@@ -4,16 +4,14 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     if user.role? :student
-      can :read, User, :id => user.id
+      can [:read, :show, :edit, :update], User, :id => user.id, :roles_mask => user.roles_mask
+      cannot :index, User
       can :edit_my_details, User, :id => user.id
       can :update_my_details, User, :id => user.id
-      can :edit, User, :id => user.id
-      can :update, User, :id => user.id
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
       cannot :assign_roles, User
       cannot :destroy, User
-      cannot :list, :students
     elsif user.role? :advisor
       can [:read, :show, :edit, :update], User, :id => user.id, :roles_mask => user.roles_mask
       cannot :destroy, User, :id => user.id, :roles_mask => user.roles_mask
@@ -33,12 +31,14 @@ class Ability
       cannot :destroy, User, :id => user.id, :roles_mask => user.roles_mask
       can [:read, :show, :edit, :update], User, :roles_mask => 1..4
       can :index, User, :roles_mask => 1..4
-      can :destroy, User, :roles_mask => 1
       can :list, :students
-      #can :list, :advisors
-      #can :list, :professors
-      #cannot :assign_roles, User
-      #can :destroy, User, :id => user.id
+      can :list, :advisors
+      can :list, :professors
+      cannot :list, :gods
+      can :manage, User, :roles_mask => 1..2
+      can :create, User
+      can :destroy, User, :roles_mask => 1..2
+      can :assign_roles, User
       # --------------------------------------------------
     elsif user.role? :god
       can :manage, :all
