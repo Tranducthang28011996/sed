@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :password_confirmation, :on => :create
 
+  # Relations
+  has_many :responses
+
   #ROLES
   ROLES = %w[student advisor professor god]
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0 "} }

@@ -1,5 +1,25 @@
-<% title "Survey" %>
+<% title "Showing Survey" %>
 <%= render 'surveys/links' %>
+<br />
+<nav class="short round">
+  <ul>
+    <% if can? :edit, @survey %>
+      <li><%= link_to "Edit", edit_survey_path(@survey) %> |</li>
+    <% end %>
+    <% if can? :destroy, @survey %>
+      <li><%= link_to "Destroy", @survey, :confirm => 'Are you sure?', :method => :delete %> |</li>
+    <% end %>
+    <% if can? :index, @survey %>
+      <li><%= link_to "View All", surveys_path %> |</li>
+    <% end %>
+    <% if can? :survey, @survey %>
+      <li><%= link_to "View Report", report_survey_path(@survey) %></li>
+    <% end %>
+  </ul>
+</nav>
+<div class="clear"></div>
+
+<%= markdown "##Showing Survey: #{@survey.name}" %>
 
 <p>
   <strong>Name:</strong>
@@ -17,8 +37,3 @@
   <% end %>
 </ol>
 
-<p>
-  <%= link_to "Edit", edit_survey_path(@survey) %> |
-  <%= link_to "Destroy", @survey, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", surveys_path %>
-</p>

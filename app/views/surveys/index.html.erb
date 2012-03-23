@@ -6,6 +6,7 @@
   <tr>
     <th>Name <em>(Click to Show)</em></th>
     <th>Edit</th>
+    <th>View Report</th>
     <th>Destroy?</th>
   </tr>
   <% for survey in @surveys %>
@@ -16,8 +17,13 @@
         <% end %>
       </td>
       <td>
-        <% if can? :index, survey %>
+        <% if can? :edit, survey %>
           <%= link_to "Edit", edit_survey_path(survey) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :survey, survey %>
+          <%= link_to "View Report", report_survey_path(survey) %>
         <% end %>
       </td>
       <td>

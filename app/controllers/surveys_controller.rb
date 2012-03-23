@@ -50,4 +50,9 @@ class SurveysController < ApplicationController
     @survey.destroy
     redirect_to surveys_url, :notice => "Successfully destroyed survey."
   end
+
+  #SPEC: 7.2.1: View the Report on a specified survey
+  def report
+    @survey = Survey.find(params[:id])
+  end
 end

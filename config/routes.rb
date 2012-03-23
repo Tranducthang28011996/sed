@@ -12,7 +12,11 @@ Sed::Application.routes.draw do
   resources :users
   resources :password_resets
   resources :email_confirm, :except => [:index]
-  resources :surveys
+  resources :surveys do
+    member do
+      get 'report'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
