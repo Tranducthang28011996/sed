@@ -9,84 +9,87 @@ class UsersController < ApplicationController
     @sort = params[:sort] if params[:sort]
     if params[:roles_mask] == '1'
       #SPEC: 3.1.1 List all students(users)
-      @users = User.students
+      @users = User.students.page(params[:page])
       if @sort == "name"
         if @asc == '1'
-          @users = User.students.order("name ASC")
+          @users = User.students.order("name ASC").page(params[:page])
         else
-          @users = User.students.order("name DESC")
+          @users = User.students.order("name DESC").page(params[:page])
         end
       elsif @sort == "email"
         if @asc == '1'
-          @users = User.students.order("email ASC")
+          @users = User.students.order("email ASC").page(params[:page])
         else
-          @users = User.students.order("email DESC")
+          @users = User.students.order("email DESC").page(params[:page])
         end
       end
       authorize! :list, :students
     elsif params[:roles_mask] == '2'
-      @users = User.advisors
+      @users = User.advisors.page(params[:page])
       if @sort == "name"
         if @asc == '1'
-          @users = User.advisors.order("name ASC")
+          @users = User.advisors.order("name ASC").page(params[:page])
         else
-          @users = User.advisors.order("name DESC")
+          @users = User.advisors.order("name DESC").page(params[:page])
         end
       elsif @sort == "email"
         if @asc == '1'
-          @users = User.advisors.order("email ASC")
+          @users = User.advisors.order("email ASC").page(params[:page])
         else
-          @users = User.advisors.order("email DESC")
+          @users = User.advisors.order("email DESC").page(params[:page])
         end
       end
       authorize! :list, :advisors
     elsif params[:roles_mask] == '4'
-      @users = User.professors
+      @users = User.professors.page(params[:page])
       if @sort == "name"
         if @asc == '1'
-          @users = User.professors.order("name ASC")
+          @users = User.professors.order("name ASC").page(params[:page])
         else
-          @users = User.professors.order("name DESC")
+          @users = User.professors.order("name DESC").page(params[:page])
         end
       elsif @sort == "email"
         if @asc == '1'
-          @users = User.professors.order("email ASC")
+          @users = User.professors.order("email ASC").page(params[:page])
         else
-          @users = User.professors.order("email DESC")
+          @users = User.professors.order("email DESC").page(params[:page])
         end
       end
       authorize! :list, :professors
     elsif params[:roles_mask] == '8'
-      @users = User.gods
+      @users = User.gods.page(params[:page])
       if @sort == "name"
         if @asc == '1'
-          @users = User.gods.order("name ASC")
+          @users = User.gods.order("name ASC").page(params[:page])
         else
-          @users = User.gods.order("name DESC")
+          @users = User.gods.order("name DESC").page(params[:page])
         end
       elsif @sort == "email"
         if @asc == '1'
-          @users = User.gods.order("email ASC")
+          @users = User.gods.order("email ASC").page(params[:page])
         else
-          @users = User.gods.order("email DESC")
+          @users = User.gods.order("email DESC").page(params[:page])
         end
       end
       authorize! :list, :gods
     else
       if @sort == "name"
         if @asc == '1'
-          @users = User.accessible_by(current_ability, :index).order("name ASC")
+          @users = User.accessible_by(current_ability, :index).order("name ASC").page(params[:page])
         else
-          @users = User.accessible_by(current_ability, :index).order("name DESC")
+          @users = User.accessible_by(current_ability, :index).order("name DESC").page(params[:page])
         end
       elsif @sort == "email"
         if @asc == '1'
-          @users = User.accessible_by(current_ability, :index).order("email ASC")
+          @users = User.accessible_by(current_ability, :index).order("email ASC").page(params[:page])
         else
-          @users = User.accessible_by(current_ability, :index).order("email DESC")
+          @users = User.accessible_by(current_ability, :index).order("email DESC").page(params[:page])
         end
       end
-      #default case
+      unless params[:sort] and params[:asc]
+        #default case
+        @users = User.accessible_by(current_ability, :index).page(params[:page])
+      end
     end
   end
 

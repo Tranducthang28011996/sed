@@ -17,6 +17,7 @@
   </ul>
 </nav>
 <%= markdown "###{yield(:title)}" %>
+
 <% if params[:roles_mask] == '1' %>
   <%= markdown "### Current Mode: Student" %>
 <% elsif params[:roles_mask] == '2' %>
@@ -34,8 +35,12 @@
   <%= markdown "###Ascending" %>
 <% end %>
 
-
 <% if @users.count > 0 %>
+  <%= markdown "####{@users.count} records returned." %>
+  <div id="paginate-count">
+    <%= markdown "### Showing page: #{@users.current_page} of #{@users.total_pages}." %>
+  </div>
+  <%= will_paginate @users %>
   <table class="round">
     <tr>
       <th>
@@ -76,6 +81,7 @@
     </tr>
   <% end %>
   </table>
+  <%= will_paginate @users %>
 <% else %>
   <%= markdown "No users were found. Would you like to #{link_to "Create a User", new_user_path} ?" %>
 <% end %>
