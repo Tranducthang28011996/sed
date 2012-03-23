@@ -1,4 +1,4 @@
-<%= form_for @user, :method => :put, :url => update_my_details_path do |f|%>
+<%= form_for @user, :method => :put, :html => {:id => 'edit_my_details'}, :url => update_my_details_path do |f|%>
   <%= render "shared/error_messages", :target => @user %>
   <div class="field">
     <%= f.label :name %><br />

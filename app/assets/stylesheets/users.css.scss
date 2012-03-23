@@ -1,6 +1,10 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* SPEC: 6.1.1*/
+form#edit_my_details {
+  width: 280px;
+}
 table {
   margin: 0 auto;
   width: 70%;

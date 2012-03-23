@@ -7,12 +7,12 @@
       <li><%= link_to "Edit", edit_survey_path(@survey) %> |</li>
     <% end %>
     <% if can? :destroy, @survey %>
-      <li><%= link_to "Destroy", @survey, :confirm => 'Are you sure?', :method => :delete %> |</li>
+      <li><%= link_to "Destroy", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |</li>
     <% end %>
     <% if can? :index, @survey %>
       <li><%= link_to "View All", surveys_path %> |</li>
     <% end %>
-    <% if can? :survey, @survey %>
+    <% if can? :report, @survey %>
       <li><%= link_to "View Report", report_survey_path(@survey) %></li>
     <% end %>
   </ul>

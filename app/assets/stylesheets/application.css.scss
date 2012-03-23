@@ -69,7 +69,8 @@ a {
     color: #666; }
   &:hover {
     color: #fff;
-    background-color: #000; } }
+    background-color: #000; }
+}
 
 #menu_links {
   clear: left;
@@ -153,4 +154,17 @@ div.indent {
 nav#users-sort-links {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+a.delete{
+  color: red;
+  &:hover {
+    color: red;
+    background-color: orange;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  &:visited {
+    color: red;
+  }
 }

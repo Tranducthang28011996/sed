@@ -6,11 +6,17 @@
   <tr>
     <th class="left">Name</th>
     <th class="left">Email <em>(Click to Edit)</em></th>
+    <th class="left">Destroy?</th>
     <th class="left">Roles</th>
   </tr>
   <tr>
     <td><%= @user.name %></td>
     <td><%= link_to @user.email, edit_user_path(@user) %></td>
+    <td>
+      <% if can? :destroy, @user %>
+        <%= link_to 'Destroy', @user, :class => "delete", confirm: 'Are you sure?', method: :delete %>
+      <% end %>
+    </td>
     <td>
       <%= @user.roles.to_s.humanize.downcase %>
     </td>

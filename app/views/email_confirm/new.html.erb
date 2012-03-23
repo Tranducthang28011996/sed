@@ -1,6 +1,6 @@
 <%= title "Email Confirmation" %>
 <%= markdown "###{yield(:title)}" %>
-<%= form_tag email_confirm_index_path, :class => "nice_round", :method => :post do %>
+<%= form_tag email_confirm_index_path, :class => "nice_round", :id => 'email-confirm-new', :method => :post do %>
   <div class="field">
       <%= label_tag :email %>
       <%= text_field_tag :email, @user.email, :size => "40" %><br />

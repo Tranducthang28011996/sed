@@ -72,7 +72,7 @@
       </td>
       <td>
         <% if can? :destroy, user %>
-          <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %>
+          <%= link_to 'Destroy', user, :class => "delete", confirm: 'Are you sure?', method: :delete %>
         <% end %>
       </td>
       <td>
