@@ -18,7 +18,8 @@ Sed::Application.routes.draw do
     end
   end
 
-  resources :take_surveys, :only => [:new, :create, :show]
+  resources :take_surveys, :only => [:create, :show]
+  get 'take_surveys/new/:id' => 'take_surveys#new', :as => :new_take_surveys
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

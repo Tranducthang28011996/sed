@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DSC-SED | <%= yield(:title) || "zomg title is nil" %></title>
+  <title>DSC-SED | <%= content_for?(:title) ? yield(:title) : t('application.errors.missing_title') %></title>
   <%= render 'shared/stylesheets' %>
   <%= javascript_include_tag "jquery", "application" %>
   <%= csrf_meta_tags %>

@@ -5,6 +5,7 @@
 <table class="nice_round">
   <tr>
     <th>Name <em>(Click to Show)</em></th>
+    <td>Take</td>
     <th>Edit</th>
     <th>View Report</th>
     <th>Destroy?</th>
@@ -15,6 +16,9 @@
         <% if can? :index, survey %>
           <%= link_to survey.name, survey %>
         <% end %>
+      </td>
+      <td>
+        <%= link_to "Take", new_take_surveys_path(survey.id) %>
       </td>
       <td>
         <% if can? :edit, survey %>

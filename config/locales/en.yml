@@ -9,3 +9,6 @@ en:
       student: "You are a Student."
       advisor: "You are an Advisor."
       professor: "You are a Professor."
+  application:
+    errors:
+      missing_title: "Secondary Education Department"

@@ -1,0 +1,25 @@
+<%= title "Taking Survey: #{@survey.name}" %>
+<%= markdown "###{yield(:title)}" %>
+
+<%= form_tag take_surveys_path, :class => 'nice_round', :method => :post do %>
+  <ol>
+  <% @survey.questions.each do |question| %>
+    <div class="field">
+      <li><%= label_tag :question, question.content %></li>
+      <ol>
+      <% question.answers.each do |answer| %>
+        <div class="field">
+          <li>
+            <%= radio_button_tag "repsonses[#{question.id}]", "#{answer.id}" %>
+            <%= label_tag :answer, answer.content %>
+          </li>
+        </div>
+      <% end %>
+      </ol>
+    </div>
+  <% end %>
+  </ol>
+  <div class="field">
+    <%= submit_tag "Submit My Answers" %>
+  </div>
+<% end %>
