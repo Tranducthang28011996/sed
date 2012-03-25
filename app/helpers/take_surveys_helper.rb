@@ -1,0 +1,2 @@
+module TakeSurveysHelper
+end

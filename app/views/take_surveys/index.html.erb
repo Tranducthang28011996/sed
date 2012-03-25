@@ -1,0 +1,15 @@
+<% title "Take Surveys" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for take_surveys in @take_surveys %>
+    <tr>
+      <td><%= take_surveys.name %></td>
+      <td><%= link_to "Edit", edit_take_surveys_path(take_surveys) %></td>
+      <td><%= link_to "Destroy", take_surveys, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+

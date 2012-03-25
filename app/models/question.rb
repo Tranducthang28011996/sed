@@ -1,10 +1,25 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id         :integer(4)      not null, primary key
+#  survey_id  :integer(4)
+#  content    :text
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 class Question < ActiveRecord::Base
+  attr_accessible :content, :answers_attributes
+
   belongs_to :survey
   has_many :answers, :dependent => :destroy
 
   #SPEC: 5.3.1.1: Content
-  validates_presence_of :content
   accepts_nested_attributes_for :answers,
         :reject_if => lambda { |a| a[:content].blank? },
         :allow_destroy => true
+
+  validates_presence_of :answers
+  validates_presence_of :content
 end

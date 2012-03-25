@@ -8,7 +8,7 @@ Sed::Application.routes.draw do
   get 'edit_my_details', to: 'users#edit_my_details'
   put 'update_my_details', to: 'users#update_my_details'
 
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
   resources :users
   resources :password_resets
   resources :email_confirm, :except => [:index]
@@ -17,6 +17,8 @@ Sed::Application.routes.draw do
       get 'report'
     end
   end
+
+  resources :take_surveys, :only => [:new, :create, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

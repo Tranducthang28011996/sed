@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer(4)      not null, primary key
+#  name                   :string(255)
+#  email                  :string(255)
+#  password_digest        :string(255)
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  auth_token             :string(255)
+#  password_reset_token   :string(255)
+#  password_reset_sent_at :datetime
+#  email_confirm_token    :string(255)
+#  email_confirmed        :boolean(1)      default(FALSE)
+#  roles_mask             :integer(4)      default(1)
+#
+
 class User < ActiveRecord::Base
   #SPEC: 1.1.1: Username(email)
   #SPEC: 1.1.2: Password
