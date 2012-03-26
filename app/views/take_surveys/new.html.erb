@@ -10,7 +10,7 @@
       <% question.answers.each do |answer| %>
         <div class="field">
           <li>
-            <%= radio_button_tag "repsonses[#{question.id}]", "#{answer.id}" %>
+            <%= radio_button_tag "response#{question.id}", "#{answer.id}" %>
             <%= label_tag :answer, answer.content %>
           </li>
         </div>
