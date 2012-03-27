@@ -5,6 +5,9 @@
 <table class="nice_round">
   <tr>
     <th>Name <em>(Click to Show)</em></th>
+    <% if can? :list_published, Survey %>
+      <th>Published?</th>
+    <% end %>
     <% if can? :take, :survey %>
       <th>Take</th>
     <% end %>
@@ -17,11 +20,16 @@
   </tr>
   <% for survey in @surveys %>
     <tr>
-      <td>
-        <% if can? :index, survey %>
+      <% if can? :index, survey %>
+        <td>
           <%= link_to survey.name, survey %>
-        <% end %>
-      </td>
+        </td>
+      <% end %>
+      <% if can? :list_published, Survey %>
+        <td>
+          <%= survey.published %>
+        </td>
+      <% end %>
       <% if can? :take, :survey %>
         <td>
           <% unless survey_completed?(current_user, survey) %>

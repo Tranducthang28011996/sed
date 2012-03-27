@@ -5,6 +5,14 @@
     <%= f.text_field :name %><br />
   </div>
   <div class="field">
+    <%= f.label :publish %><br />
+    Yes <%= f.radio_button :published, true %> 
+    No <%= f.radio_button :published, false %><br />
+  </div>
+  <div class="field">
+    <%= f.text_field :available_at, :class => "foo" %>
+  </div>
+  <div class="field">
   <%= f.fields_for :questions do |builder| %>
     <%= render 'question_fields', :f => builder %>
   <% end %>
