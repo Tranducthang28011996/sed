@@ -22,4 +22,10 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :answers
   validates_presence_of :content
+
+  scope :by_survey, lambda { |survey| where("survey_id = ?", survey) }
+
+  def my_questions
+    Question.by_survey(self.survey_id).map(&:id)
+  end
 end

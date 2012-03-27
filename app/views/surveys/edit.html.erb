@@ -5,10 +5,10 @@
 <nav class="short round">
   <ul>
     <% if can? :index, @survey %>
-      <li><%= link_to "Show", @survey %> |</li>
+      <li><%= link_to "Show #{@survey.name.inspect}", @survey %> |</li>
     <% end %>
-    <% if can? :index, @survey %>
-      <li><%= link_to "View All", surveys_path %></li>
+    <% if can? :destroy, @survey %>
+      <li><%= link_to "Destroy #{@survey.name.inspect}", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %></li>
     <% end %>
   <ul>
 </nav>

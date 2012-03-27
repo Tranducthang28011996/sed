@@ -1,21 +1,13 @@
 <%= title "Listing Users" %>
+
+<% # Show all the links relating to Users' actions %>
 <%= render 'users/links' %>
-<nav class="nice_round" id="users-sort-links">
-  <ul>
-    <% if can? :list, :students %>
-      <li><%= link_to "Show Students", users_path(:roles_mask => '1') %></li>
-    <% end %>
-    <% if can? :list, :advisors %>
-      <li><%= link_to "Show Advisors", users_path(:roles_mask => '2') %></li>
-    <% end %>
-    <% if can? :list, :professors %>
-      <li><%= link_to "Show Professors", users_path(:roles_mask => '4') %></li>
-    <% end %>
-    <% if can? :list, :gods %>
-      <li><%= link_to "Show Gods", users_path(:roles_mask => '8') %></li>
-    <% end %>
-  </ul>
-</nav>
+<%= yield :user_links if content_for? :user_links %>
+
+<% # Show all the links relating to sorting Users' actions %>
+<%= render 'users/user_sort_links' %>
+<%= yield :user_sort_links if content_for? :user_sort_links %>
+
 <%= markdown "###{yield(:title)}" %>
 
 <% if params[:roles_mask] == '1' %>

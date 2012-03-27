@@ -1,27 +1,9 @@
 <header>
   <nav class="nice_round">
-    <div id="menu_links">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <% if can? :index, User %>
-          <li><%= link_to "Users", users_path %></li>
-        <% end %>
-        <% if can? :index, Survey %>
-          <li><%= link_to "Surveys", surveys_path %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div id="current_user">
-      <% if current_user %>
-        Logged in as 
-        <% if can? :read, User, :id => current_user.id %>
-          <%= link_to current_user.name, current_user %>. 
-        <% end %>
-        <%= link_to "Log Out", logout_path %>
-      <% else %>
-        <%= link_to "Log In", login_path %>
-      <% end %>
-     </div>
-     <div class="clear"></div>
+    <%= render 'layouts/main_links' %>
+    <%= yield :main_links if content_for? :main_links %>
+    <%= render 'layouts/current_user_links' %>
+    <%= yield :current_user_links if content_for? :current_user_links %>
+    <div class="clear"></div>
   </nav>
 </header>

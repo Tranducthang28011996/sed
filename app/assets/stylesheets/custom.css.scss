@@ -18,3 +18,21 @@
 form#new_survey {
   margin-top: 1em;
 }
+
+span {
+  &.my-response {
+    background-color: #FF0000;
+    padding: 3px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+}
+div {
+  &.center {
+    margin: 0 auto;
+    h1 {
+      text-align: center;
+    }
+  }
+}

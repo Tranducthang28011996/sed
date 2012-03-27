@@ -10,6 +10,7 @@ class Ability
       can :update_my_details, User, :id => user.id
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
+      can :index, Response, :user_id => user.id
       cannot :assign_roles, User
       cannot :destroy, User
     elsif user.role? :advisor
@@ -23,6 +24,7 @@ class Ability
       cannot :list, :gods
       can :manage, User, :roles_mask => 1..2
       can :create, User
+      can :index, Response
       cannot :destroy, User
       cannot :assign_roles, User
     elsif user.role? :professor
@@ -40,6 +42,8 @@ class Ability
       can :destroy, User, :roles_mask => 1..2
       can :assign_roles, User
       can :manage, Survey
+      can :manage, :survey
+      can :manage, Response
       # --------------------------------------------------
     elsif user.role? :god
       can :manage, :all
@@ -48,6 +52,7 @@ class Ability
       can :list, :advisors
       can :list, :professors
       can :list, :gods
+      can :manage, Response
     else
       #guest shit
       cannot :manage, :all

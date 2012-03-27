@@ -1,0 +1,9 @@
+<%= div_for response do %>
+  Answer ID: <%= label_tag :answer_id, response.answer_id %><br />
+  User ID: <%= label_tag :user_id, response.user_id %><br />
+  Question ID: <%= label_tag :question_id, response.question_id %><br />
+  Belongs to Survey: <%= label_tag :survey_id, response.answer.question.survey_id %><br />
+  With Name: <%= label_tag :survey_name, response.answer.question.survey.name.inspect %><br />
+  Content (Free Response): <br />
+  <%= text_area_tag :content, response.content.blank? ? "None" : response.content, :rows => 3, :disabled => true %><br />
+<% end %>

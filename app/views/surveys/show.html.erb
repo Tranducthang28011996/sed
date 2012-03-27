@@ -4,16 +4,13 @@
 <nav class="short round">
   <ul>
     <% if can? :edit, @survey %>
-      <li><%= link_to "Edit", edit_survey_path(@survey) %> |</li>
-    <% end %>
-    <% if can? :destroy, @survey %>
-      <li><%= link_to "Destroy", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %> |</li>
-    <% end %>
-    <% if can? :index, @survey %>
-      <li><%= link_to "View All", surveys_path %> |</li>
+      <li><%= link_to "Edit #{@survey.name.inspect}", edit_survey_path(@survey) %> |</li>
     <% end %>
     <% if can? :report, @survey %>
-      <li><%= link_to "View Report", report_survey_path(@survey) %></li>
+      <li><%= link_to "View Report for #{@survey.name.inspect}", report_survey_path(@survey) %> |</li>
+    <% end %>
+    <% if can? :destroy, @survey %>
+      <li><%= link_to "Destroy #{@survey.name.inspect}", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %></li>
     <% end %>
   </ul>
 </nav>
@@ -21,19 +18,20 @@
 
 <%= markdown "##Showing Survey: #{@survey.name}" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @survey.name %>
-</p>
-
-<ol>
-  <% for question in @survey.questions %>
-    <li><%= question.content %></li>
-    <ul>
-      <% for answer in question.answers %>
-        <li><%= answer.content %></li>
+<table class="nice_round">
+  <tr><td>
+  <ol>
+  <% @survey.questions.each do |question| %>
+    <%= content_tag(:li, label_tag(:question, question.content.inspect)) %>
+    <ol>
+      <% question.answers.each do |answer| %>
+        <%= content_tag_for(:li, answer) do %>
+          <%= label_tag :answer, answer.content.inspect %>
+        <% end %>
       <% end %>
-    </ul>
+    </ol>
+    <br />
   <% end %>
-</ol>
-
+  </ol>
+  </td></tr>
+</table>

@@ -5,7 +5,12 @@
 <table class="nice_round">
   <tr>
     <th>Name <em>(Click to Show)</em></th>
-    <td>Take</td>
+    <% if can? :take, :survey %>
+      <th>Take</th>
+    <% end %>
+    <% if can? :show, :survey %>
+      <th>Show Results</th>
+    <% end %>
     <th>Edit</th>
     <th>View Report</th>
     <th>Destroy?</th>
@@ -17,9 +22,20 @@
           <%= link_to survey.name, survey %>
         <% end %>
       </td>
-      <td>
-        <%= link_to "Take", new_take_surveys_path(survey.id) %>
-      </td>
+      <% if can? :take, :survey %>
+        <td>
+          <% unless survey_completed?(current_user, survey) %>
+            <%= link_to "Take", new_take_surveys_path(survey.id) %>
+          <% else %>
+            Completed
+          <% end %>
+        </td>
+      <% end %>
+      <% if can? :show, :survey %>
+        <td>
+          <%= link_to "Show Results", take_survey_path(survey) %>
+        </td>
+      <% end %>
       <td>
         <% if can? :edit, survey %>
           <%= link_to "Edit", edit_survey_path(survey) %>

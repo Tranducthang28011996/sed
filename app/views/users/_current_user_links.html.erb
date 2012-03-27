@@ -1,0 +1,8 @@
+<%= content_for :current_user_self_links do %>
+  <% if can? :edit_my_details, User, :id => current_user.id %>
+    <%= link_to "Change My Details", edit_my_details_path %> | 
+  <% end %>
+  <% if can? :edit_password, User, :id => current_user.id %>
+    <%= link_to "Change Password", edit_user_password_path %>
+  <% end %>
+<% end %>

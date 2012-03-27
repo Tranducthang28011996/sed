@@ -1,0 +1,15 @@
+<%= content_for :current_user_links do %>
+  <div id="current_user">
+    <% if current_user %>
+      Logged in as 
+      <% if can? :read, User, :id => current_user.id %>
+        <%= link_to current_user.name, current_user %>. 
+      <% end %>
+        <%= link_to "Log Out", logout_path %>
+      <% else %>
+      <% #unless (params[:controller] == "sessions" && params[:action] == "new")  %>
+        <%= link_to "Log In", login_path %>
+      <% #end %>
+    <% end %>
+  </div>
+<% end %>

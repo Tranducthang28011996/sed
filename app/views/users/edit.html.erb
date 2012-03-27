@@ -1,5 +1,6 @@
 <%= title "Editing User" %>
 <%= render 'users/links' %>
+<%= yield :user_links if content_for? :user_links %>
 <%= markdown "###{yield(:title)}" %>
 
 <%= render 'form' %>

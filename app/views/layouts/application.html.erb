@@ -3,7 +3,7 @@
 <head>
   <title>DSC-SED | <%= content_for?(:title) ? yield(:title) : t('application.errors.missing_title') %></title>
   <%= render 'shared/stylesheets' %>
-  <%= javascript_include_tag "jquery", "application" %>
+  <%= javascript_include_tag "jquery", "application", "custom" %>
   <%= csrf_meta_tags %>
 </head>
 <body>

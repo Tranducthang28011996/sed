@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password_confirmation, :on => :create
 
   # Relations
-  has_many :responses
+  has_many :responses, :dependent => :destroy
+  accepts_nested_attributes_for :responses
 
   #ROLES
   ROLES = %w[student advisor professor god]

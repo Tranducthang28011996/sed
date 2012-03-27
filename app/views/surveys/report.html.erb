@@ -4,17 +4,17 @@
 <nav class="round short">
   <ul>
     <% if can? :index, @survey %>
-      <li><%= link_to "Show " + @survey.name, @survey %></li>
+      <li><%= link_to "Show " + @survey.name.inspect, @survey %> |</li>
     <% end %>
     <% if can? :edit, @survey %>
-      <li><%= link_to "Edit " + @survey.name, edit_survey_path(@survey) %></li>
+      <li><%= link_to "Edit " + @survey.name.inspect, edit_survey_path(@survey) %></li>
     <% end %>
   </ul>
 </nav>
 <div class="clear"></div>
 <%= markdown "## Report" %>
 
-<table class="nice_round">
+<table id="survey-report" class="nice_round">
   <tr>
     <th>Report for Survey <%= @survey.name %></th>
   <tr>
@@ -28,14 +28,14 @@
   <% # make a new row for every question %>
   <% @survey.questions.each do |question| %>
   <tr>
-    <td><%= question.content %></td>
+    <td><%= question.content.inspect %></td>
     <td><%= question.id %></td>
     <% # make a new row for every questions answer %>
     <% question.answers.each do |answer| %>
     <tr>
       <td></td>
       <td></td>
-      <td><%= answer.content %></td>
+      <td><%= answer.content.inspect %></td>
       <td><%= answer.id %></td>
       <td><%= Response.where(:answer_id => answer.id).count %></td>
     </tr>

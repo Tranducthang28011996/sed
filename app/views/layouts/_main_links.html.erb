@@ -1,0 +1,13 @@
+<%= content_for :main_links do %>
+  <div id="menu_links">
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <% if can? :index, User %>
+        <li><%= link_to "Users", users_path %></li>
+      <% end %>
+      <% if can? :index, Survey %>
+        <li><%= link_to "Surveys", surveys_path %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

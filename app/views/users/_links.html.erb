@@ -1,17 +1,15 @@
-<nav class="round short">
-  <ul>
-    <% if can? :index, User %>
-      <li><%= link_to "Users Index", users_path %></li>
-    <% end %>
-    <% if can? :create, User %>
-      <li><%= link_to "Create New User", new_user_path %></li>
-    <% end %>
-    <% if can? :edit_my_details, User, :id => current_user.id %>
-      <li><%= link_to "Change My Details", edit_my_details_path %> | </li>
-    <% end %>
-    <% if can? :edit_password, User, :id => current_user.id %>
-      <li><%= link_to "Change Password", edit_user_password_path %></li>
-    <% end %>
-  </ul>
-</nav>
-<div class="clear"></div>
+<%= content_for :user_links do %>
+  <% if can? :manage, User %>
+  <nav class="round short">
+    <ul>
+      <% if can? :index, User %>
+        <li><%= link_to "Users Index", users_path %></li>
+      <% end %>
+      <% if can? :create, User %>
+        <li><%= link_to "Create New User", new_user_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <div class="clear"></div>
+  <% end %>
+<% end %>

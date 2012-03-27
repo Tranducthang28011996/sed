@@ -1,0 +1,28 @@
+<% title "Showing Results" %>
+<%= markdown "###{yield(:title)}" %>
+<%= markdown "### Student: #{current_user.name}" %>
+<%= markdown "### for: #{@survey.name.inspect}" %>
+
+<table class="nice_round">
+  <tr><td>
+  <ol>
+  <% @survey.questions.each do |question| %>
+    <%= content_tag(:li, label_tag(:question, question.content)) %>
+    <ol>
+      <% question.answers.each do |answer| %>
+        <%= content_tag_for(:li, answer) do %>
+          <% unless current_user.responses.find_by_question_id_and_answer_id(question.id, answer.id).nil? %>
+            <span class="my-response">
+              <%= label_tag :answer, answer.content %>
+            </span>
+          <% else %>
+            <%= label_tag :answer, answer.content %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ol>
+    <br />
+  <% end %>
+  </ol>
+  </td></tr>
+</table>

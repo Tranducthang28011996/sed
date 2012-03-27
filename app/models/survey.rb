@@ -16,4 +16,9 @@ class Survey < ActiveRecord::Base
         :allow_destroy => true
   validates_presence_of :name
   validates_presence_of :questions
+
+  # return an array of all my questions
+  def my_questions
+    self.questions.map(&:id)
+  end
 end
