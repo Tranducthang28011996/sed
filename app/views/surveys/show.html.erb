@@ -36,6 +36,6 @@
   </td></tr>
   <tr>
     <td><%= markdown "**Published?: #{@survey.published}**" %>
-    <%= markdown "**Available On:  #{@survey.available_at.localtime}**" %></td>
+    <%= markdown "**Available On:  #{date_time_pretty_mst(@survey.available_at)}**" %></td>
   </tr>
 </table>

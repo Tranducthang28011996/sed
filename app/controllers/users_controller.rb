@@ -1,95 +1,26 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
+  helper_method :sort_column, :sort_direction, :sort_scope
+
   #SPEC: 2.1 Student Column
   #SPEC: 2.1.1 List all students(users)
   #SPEC: 3.1.2 Sorting options
   def index
-    @asc = params[:asc] if params[:asc]
-    @sort = params[:sort] if params[:sort]
-    if params[:roles_mask] == '1'
-      #SPEC: 3.1.1 List all students(users)
-      @users = User.students.page(params[:page])
-      if @sort == "name"
-        if @asc == '1'
-          @users = User.students.order("name ASC").page(params[:page])
-        else
-          @users = User.students.order("name DESC").page(params[:page])
-        end
-      elsif @sort == "email"
-        if @asc == '1'
-          @users = User.students.order("email ASC").page(params[:page])
-        else
-          @users = User.students.order("email DESC").page(params[:page])
-        end
-      end
+    if params[:scope] == "students"
+      @users = User.students.page(params[:page]).order(sort_column + " " + sort_direction)
       authorize! :list, :students
-    elsif params[:roles_mask] == '2'
-      @users = User.advisors.page(params[:page])
-      if @sort == "name"
-        if @asc == '1'
-          @users = User.advisors.order("name ASC").page(params[:page])
-        else
-          @users = User.advisors.order("name DESC").page(params[:page])
-        end
-      elsif @sort == "email"
-        if @asc == '1'
-          @users = User.advisors.order("email ASC").page(params[:page])
-        else
-          @users = User.advisors.order("email DESC").page(params[:page])
-        end
-      end
+    elsif params[:scope] == "advisors"
+      @users = User.advisors.page(params[:page]).order(sort_column + " " + sort_direction)
       authorize! :list, :advisors
-    elsif params[:roles_mask] == '4'
-      @users = User.professors.page(params[:page])
-      if @sort == "name"
-        if @asc == '1'
-          @users = User.professors.order("name ASC").page(params[:page])
-        else
-          @users = User.professors.order("name DESC").page(params[:page])
-        end
-      elsif @sort == "email"
-        if @asc == '1'
-          @users = User.professors.order("email ASC").page(params[:page])
-        else
-          @users = User.professors.order("email DESC").page(params[:page])
-        end
-      end
+    elsif params[:scope] == "professors"
+      @users = User.professors.page(params[:page]).order(sort_column + " " + sort_direction)
       authorize! :list, :professors
-    elsif params[:roles_mask] == '8'
-      @users = User.gods.page(params[:page])
-      if @sort == "name"
-        if @asc == '1'
-          @users = User.gods.order("name ASC").page(params[:page])
-        else
-          @users = User.gods.order("name DESC").page(params[:page])
-        end
-      elsif @sort == "email"
-        if @asc == '1'
-          @users = User.gods.order("email ASC").page(params[:page])
-        else
-          @users = User.gods.order("email DESC").page(params[:page])
-        end
-      end
+    elsif params[:scope] == "gods"
+      @users = User.gods.page(params[:page]).order(sort_column + " " + sort_direction)
       authorize! :list, :gods
     else
-      if @sort == "name"
-        if @asc == '1'
-          @users = User.accessible_by(current_ability, :index).order("name ASC").page(params[:page])
-        else
-          @users = User.accessible_by(current_ability, :index).order("name DESC").page(params[:page])
-        end
-      elsif @sort == "email"
-        if @asc == '1'
-          @users = User.accessible_by(current_ability, :index).order("email ASC").page(params[:page])
-        else
-          @users = User.accessible_by(current_ability, :index).order("email DESC").page(params[:page])
-        end
-      end
-      unless params[:sort] and params[:asc]
-        #default case
-        @users = User.accessible_by(current_ability, :index).page(params[:page])
-      end
+      @users = User.accessible_by(current_ability, :index).order(sort_column + " " + sort_direction).page(params[:page])
     end
   end
 
@@ -166,5 +97,20 @@ class UsersController < ApplicationController
     authorize! :destroy, User, :id => current_user.id
     @user.destroy
     redirect_to users_url
+  end
+
+  private
+
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def sort_scope
+    flash[:alert] = "sort scope got #{params[:scope]}"
+    %w[students advisors professors gods].include?(params[:scope]) ? params[:scope] : "default"
   end
 end

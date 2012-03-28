@@ -2,16 +2,16 @@
   <nav class="nice_round" id="users-sort-links">
     <ul>
       <% if can? :list, :students %>
-        <li><%= link_to "Show Students", users_path(:roles_mask => '1') %></li>
+        <li><%= sortable "name", "students", "Show Students" %></li>
       <% end %>
       <% if can? :list, :advisors %>
-        <li><%= link_to "Show Advisors", users_path(:roles_mask => '2') %></li>
+        <li><%= sortable "name", "advisors", "Show Advisors" %></li>
       <% end %>
       <% if can? :list, :professors %>
-        <li><%= link_to "Show Professors", users_path(:roles_mask => '4') %></li>
+        <li><%= sortable "name", "professors", "Show Professors" %></li>
       <% end %>
       <% if can? :list, :gods %>
-        <li><%= link_to "Show Gods", users_path(:roles_mask => '8') %></li>
+        <li><%= sortable "name", "gods", "Show Gods" %></li>
       <% end %>
     </ul>
   </nav>

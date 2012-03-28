@@ -10,20 +10,20 @@
 
 <%= markdown "###{yield(:title)}" %>
 
-<% if params[:roles_mask] == '1' %>
+<% if params[:scope] == "students" %>
   <%= markdown "### Current Mode: Student" %>
-<% elsif params[:roles_mask] == '2' %>
+<% elsif params[:scope] == "advisors" %>
   <%= markdown "### Current Mode: Advisor" %>
-<% elsif params[:roles_mask] == '4' %>
+<% elsif params[:scope] == "professors" %>
   <%= markdown "### Current Mode: Professor" %>
-<% elsif params[:roles_mask] == '8' %>
+<% elsif params[:scope] == "gods" %>
   <%= markdown "### Current Mode: God" %>
 <% else %>
   <%= markdown "### Current Mode: All" %>
 <% end %>
-<% if params[:asc] == 'false' %>
+<% if params[:direction] == "desc" %>
   <%= markdown "###Descending" %>
-<% elsif params[:asc] == 'true' %>
+<% elsif params[:direction] == "asc" %>
   <%= markdown "###Ascending" %>
 <% end %>
 
@@ -33,21 +33,16 @@
     <%= markdown "### Showing page: #{@users.current_page} of #{@users.total_pages}." %>
   </div>
   <%= will_paginate @users %>
-  <table class="round">
+  <table class="pretty round">
     <tr>
       <th>
-        Name <em>(Click to Show)</em>
-        <%= link_to "Asc", users_path(:roles_mask => params[:roles_mask], :sort => :name, :asc => '1') %>
-        <%= link_to "Desc", users_path(:roles_mask => params[:roles_mask], :sort => :name, :asc => '0') %>
+        <%= sortable "name", params[:scope] %> <em> (Click to Show)</em>
       </th>
       <th>
-        Email <em>(Click to Edit)</em>
-        <%= link_to "Asc", users_path(:roles_mask => params[:roles_mask], :sort => :email, :asc => '1') %>
-        <%= link_to "Desc", users_path(:roles_mask => params[:roles_mask], :sort => :email, :asc => '0') %>
+        <%= sortable "email", params[:scope] %> <em> (Click to Edit)</em>
       </th>
       <th>Destroyable?</th>
       <th>Roles</th>
-      <th></th>
     </tr>
 
   <% @users.each do |user| %>
