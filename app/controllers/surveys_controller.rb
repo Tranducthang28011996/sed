@@ -21,6 +21,9 @@ class SurveysController < ApplicationController
   #SPEC: 2.2.5: Create a new Survey(form)
   def create
 #@survey = Survey.new(params[:survey])
+    if params[:available_at_pretty]
+      flash.alert = "available at pretty found"
+    end
     if @survey.save
       redirect_to @survey, :notice => "Successfully created survey."
     else

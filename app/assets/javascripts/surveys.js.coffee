@@ -1,2 +1,2 @@
 jQuery ->
-  $("#survey_available_at").datepicker
+  $("input#available_at").datepicker( { minDate: '-1y', maxDate: '+2y', dateFormat: 'd M yy'} );

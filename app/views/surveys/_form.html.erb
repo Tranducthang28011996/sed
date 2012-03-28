@@ -10,7 +10,8 @@
     No <%= f.radio_button :published, false %><br />
   </div>
   <div class="field">
-    <%= f.text_field :available_at, :class => "foo" %>
+    <%= f.label :available_at, "Available On" %>
+    <%= f.datetime_select :available_at, :ampm => true %>
   </div>
   <div class="field">
   <%= f.fields_for :questions do |builder| %>

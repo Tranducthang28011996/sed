@@ -16,7 +16,7 @@
 </nav>
 <div class="clear"></div>
 
-<%= markdown "##Showing Survey: #{@survey.name}" %>
+<%= markdown "##Showing Survey: #{@survey.name.inspect}" %>
 
 <table class="nice_round">
   <tr><td>
@@ -35,6 +35,7 @@
   </ol>
   </td></tr>
   <tr>
-    <td><%= markdown "**Published?: #{@survey.published}**" %></td>
+    <td><%= markdown "**Published?: #{@survey.published}**" %>
+    <%= markdown "**Available On:  #{@survey.available_at.localtime}**" %></td>
   </tr>
 </table>
