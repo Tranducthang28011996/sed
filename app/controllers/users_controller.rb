@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     else
       @users = User.accessible_by(current_ability, :index).order(sort_column + " " + sort_direction).page(params[:page])
     end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @users }
+    end
   end
 
   def show
