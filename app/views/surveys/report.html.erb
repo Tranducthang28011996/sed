@@ -1,17 +1,17 @@
 <%= title "Survey Report For: #{@survey.name}" %>
+<%= content_for :survey_report_links do %>
+  <% if can? :show, @survey %>
+    <li>| <%= link_to "Show: " + @survey.name.inspect, @survey %> |</li>
+  <% end %>
+  <% if can? :edit, @survey %>
+    <li><%= link_to "Edit: " + @survey.name.inspect, edit_survey_path(@survey) %> |</li>
+  <% end %>
+  <% if can? :destroy, @survey %>
+    <li><%= link_to "Destroy: #{@survey.name.inspect}", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %></li>
+  <% end %>
+<% end %>
+
 <%= render 'surveys/links' %>
-<br />
-<nav class="round short">
-  <ul>
-    <% if can? :index, @survey %>
-      <li><%= link_to "Show " + @survey.name.inspect, @survey %> |</li>
-    <% end %>
-    <% if can? :edit, @survey %>
-      <li><%= link_to "Edit " + @survey.name.inspect, edit_survey_path(@survey) %></li>
-    <% end %>
-  </ul>
-</nav>
-<div class="clear"></div>
 <%= markdown "## Report" %>
 
 <table id="survey-report" class="nice_round">

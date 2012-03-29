@@ -1,20 +1,17 @@
 <% title "Showing Survey" %>
+<%= content_for :survey_show_links do %>
+  <% if can? :edit, @survey %>
+    <li>| <%= link_to "Edit: #{@survey.name.inspect}", edit_survey_path(@survey) %> |</li>
+  <% end %>
+  <% if can? :report, @survey %>
+    <li><%= link_to "View Report for: #{@survey.name.inspect}", report_survey_path(@survey) %> |</li>
+  <% end %>
+  <% if can? :destroy, @survey %>
+    <li><%= link_to "Destroy: #{@survey.name.inspect}", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %></li>
+  <% end %>
+<% end %>
+
 <%= render 'surveys/links' %>
-<br />
-<nav class="short round">
-  <ul>
-    <% if can? :edit, @survey %>
-      <li><%= link_to "Edit #{@survey.name.inspect}", edit_survey_path(@survey) %> |</li>
-    <% end %>
-    <% if can? :report, @survey %>
-      <li><%= link_to "View Report for #{@survey.name.inspect}", report_survey_path(@survey) %> |</li>
-    <% end %>
-    <% if can? :destroy, @survey %>
-      <li><%= link_to "Destroy #{@survey.name.inspect}", @survey, :class => "delete", :confirm => 'Are you sure?', :method => :delete %></li>
-    <% end %>
-  </ul>
-</nav>
-<div class="clear"></div>
 
 <%= markdown "##Showing Survey: #{@survey.name.inspect}" %>
 

@@ -1,11 +1,22 @@
+<% if can? :index, Survey %>
 <nav class="round short">
   <ul>
     <% if can? :index, Survey %>
       <li><%= link_to "Survey Index", surveys_path %> |</li>
     <% end %>
     <% if can? :create, Survey %>
-      <li><%= link_to "New Survey", new_survey_path %></li>
+      <li><%= link_to "Create New Survey", new_survey_path %></li>
+    <% end %>
+    <% if can? :edit, Survey %>
+      <%= yield :survey_edit_links if content_for? :survey_edit_links %>
+    <% end %>
+    <% if can? :show, Survey %>
+      <%= yield :survey_show_links if content_for? :survey_show_links %>
+    <% end %>
+    <% if can? :report, Survey %>
+      <%= yield :survey_report_links if content_for? :survey_report_links %>
     <% end %>
   </ul>
 </nav>
 <div class="clear"></div>
+<% end %>
