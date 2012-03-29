@@ -108,16 +108,16 @@ th, td {
 
 .pretty {
   th {
-    &.current {
+    .sort_current {
       padding-right: 12px;
       background-repeat: no-repeat;
       background-position: right center;
     }
-    &.asc {
-      background-image: url(/images/up_arrow.gif);
+    .asc {
+      background-image: url(images/up_arrow.gif);
     }
-    &.desc {
-      background-image: url(/images/down_arrow.gif);
+    .desc {
+      background-image: url(images/down_arrow.gif);
     }
   }
 }
