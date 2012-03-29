@@ -1,10 +1,16 @@
 <%= title "Showing User: #{@user.name}" %>
+<%= content_for :user_show_links do %>
+  <% if can? :edit, User %>
+    <li>| <%= link_to "Edit: #{@user.name.inspect}", edit_user_path(@user) %> |</li>
+  <% end %>
+  <% if can? :destroy, User %>
+    <li><%= link_to "Destroy: #{@user.name.inspect}", @user, :class => "delete", confirm: 'Are you sure?', method: :delete %></li>
+  <% end %>
+<% end %>
 
 <%= render 'users/links' %>
-<%= yield :user_links if content_for? :user_links %>
 
 <%= markdown "###{yield(:title)}" %>
-
 <table class="round">
   <tr>
     <th class="left">Name</th>

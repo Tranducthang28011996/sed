@@ -2,7 +2,6 @@
 
 <% # Show all the links relating to Users' actions %>
 <%= render 'users/links' %>
-<%= yield :user_links if content_for? :user_links %>
 
 <% # Show all the links relating to sorting Users' actions %>
 <%= render 'users/user_sort_links' %>
@@ -48,12 +47,12 @@
   <% @users.each do |user| %>
     <tr>
       <td>
-        <% if can? :index, user %>
+        <% if can? :show, user %>
           <%= link_to user.name, user %>
         <% end %>
       </td>
       <td>
-        <% if can? :index, user %>
+        <% if can? :edit, user %>
           <%= link_to user.email, edit_user_path(user) %>
         <% end %>
       </td>

@@ -1,15 +1,17 @@
-<%= content_for :user_links do %>
-  <% if can? :manage, User %>
-  <nav class="round short">
-    <ul>
-      <% if can? :index, User %>
-        <li><%= link_to "Users Index", users_path %></li>
-      <% end %>
-      <% if can? :create, User %>
-        <li><%= link_to "Create New User", new_user_path %></li>
-      <% end %>
-    </ul>
-  </nav>
-  <div class="clear"></div>
-  <% end %>
-<% end %>
+<nav class="round short">
+  <ul>
+    <% if can? :index, User %>
+      <li><%= link_to "Users Index", users_path %> |</li>
+    <% end %>
+    <% if can? :create, User %>
+      <li><%= link_to "Create New User", new_user_path %></li>
+    <% end %>
+    <% if can? :edit, User %>
+      <li><%= yield :user_edit_links if content_for? :user_edit_links %></li>
+    <% end %>
+    <% if can? :show, User %>
+      <li><%= yield :user_show_links if content_for? :user_show_links %></li>
+    <% end %>
+  </ul>
+</nav>
+<div class="clear"></div>
