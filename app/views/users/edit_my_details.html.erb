@@ -1,4 +1,12 @@
 <%= title "Change My Details" %>
+<%= content_for :user_edit_my_details_links do %>
+  <% if can? :edit_my_details, User, :id => current_user.id %>
+    <li><%= link_to "Change My Details", edit_my_details_path %> |</li>
+  <% end %>
+  <% if can? :edit_password, User, :id => current_user.id %>
+    <li><%= link_to "Change Password", edit_user_password_path %></li>
+  <% end %>
+<% end %>
 <%= render 'users/links' %>
 <%= markdown "###{yield(:title)}" %>
 <%= render 'my_details' %>

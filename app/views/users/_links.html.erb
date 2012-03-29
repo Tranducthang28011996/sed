@@ -7,10 +7,16 @@
       <li><%= link_to "Create New User", new_user_path %></li>
     <% end %>
     <% if can? :edit, User %>
-      <li><%= yield :user_edit_links if content_for? :user_edit_links %></li>
+      <%= yield :user_edit_links if content_for? :user_edit_links %>
     <% end %>
     <% if can? :show, User %>
-      <li><%= yield :user_show_links if content_for? :user_show_links %></li>
+      <%= yield :user_show_links if content_for? :user_show_links %>
+    <% end %>
+    <% if can? :edit_my_details, User, :id => current_user.id %>
+      <%= yield :user_edit_my_details_links if content_for? :user_edit_my_details_links %>
+    <% end %>
+    <% if can? :edit_password, User, :id => current_user.id %>
+      <%= yield :user_edit_password_links if content_for? :user_edit_password_links %>
     <% end %>
   </ul>
 </nav>

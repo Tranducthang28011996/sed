@@ -2,13 +2,13 @@
   <nav class="nice_round" id="users-sort-links">
     <ul>
       <% if can? :list, :students %>
-        <li><%= sortable "name", "students", "Show Students" %></li>
+        <li><%= sortable "name", "students", "Show Students" %> |</li>
       <% end %>
       <% if can? :list, :advisors %>
-        <li><%= sortable "name", "advisors", "Show Advisors" %></li>
+        <li><%= sortable "name", "advisors", "Show Advisors" %> |</li>
       <% end %>
       <% if can? :list, :professors %>
-        <li><%= sortable "name", "professors", "Show Professors" %></li>
+        <li><%= sortable "name", "professors", "Show Professors" %> |</li>
       <% end %>
       <% if can? :list, :gods %>
         <li><%= sortable "name", "gods", "Show Gods" %></li>
