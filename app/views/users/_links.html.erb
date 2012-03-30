@@ -4,7 +4,10 @@
       <li><%= link_to "Users Index", users_path %> |</li>
     <% end %>
     <% if can? :create, User %>
-      <li><%= link_to "Create New User", new_user_path %></li>
+      <li><%= link_to "Create New User", new_user_path %> |</li>
+    <% end %>
+    <% if can? :search, User %>
+      <li><%= link_to "User Search", user_search_path %></li>
     <% end %>
     <% if can? :edit, User %>
       <%= yield :user_edit_links if content_for? :user_edit_links %>
