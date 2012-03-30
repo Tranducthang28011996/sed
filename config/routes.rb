@@ -6,6 +6,7 @@ Sed::Application.routes.draw do
   put 'update_user_password', to: 'users#update_password'
 
   get 'edit_my_details', to: 'users#edit_my_details'
+  get 'users/search', to: 'users#search', as: 'user_search'
   put 'update_my_details', to: 'users#update_my_details'
 
   resources :sessions, :only => [:new, :create, :destroy]

@@ -16,4 +16,18 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_path, :notice => "Please login to continue." if current_user.nil?
   end
+
+  helper_method :sort_column, :sort_direction, :sort_scope
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def sort_scope
+    flash[:alert] = "sort scope got #{params[:scope]}"
+    %w[students advisors professors gods].include?(params[:scope]) ? params[:scope] : "default"
+  end
 end

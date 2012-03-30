@@ -1,0 +1,19 @@
+<section id="users-listing">
+  <div id="user-search">
+    <%= form_tag user_search_path, :method => :get, :id => "user-search", do %>
+      <%= text_field_tag :search, params[:search], :size => 15 %>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
+  </div>
+  <%= will_paginate @students, :previous_label => "<<", :next_label => ">>" %>
+  <div id="user-list-content">
+    <%= content_tag(:ol, :id => "selectable") do %>
+      <% @students.each do |student| %>
+        <%= content_tag(:li, :class => "ui-widget-content") do %>
+          <%= student.name %>
+          <%= hidden_field_tag :user_id, student.id %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>

@@ -1,6 +1,21 @@
 <%= title "Home" %>
-<%= render 'shared/roles' %>
+<% if current_user %>
+<section id="master">
+  <% if current_user.role? :student %>
+    <%= render "layouts/students/student" %>
+  <% elsif current_user.role? :advisor %>
+    <%= render "layouts/advisors/advisor" %>
+  <% elsif current_user.role? :professor %>
+    <%= render "layouts/professors/professor" %>
+  <% elsif current_user.role? :god %>
+    <%= render "layouts/gods/god" %>
+  <% end %>
 
-<div id="pages-home-users">
-  there is no content yet
-</div>
+  <section id="result">
+    <div id="result">
+      nothing yet.
+    </div>
+  </section>
+  <div class="clear"></div>
+</section>
+<% end %>

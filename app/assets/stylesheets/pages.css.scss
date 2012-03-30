@@ -1,3 +1,57 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div {
+  #result {
+    clear: right;
+  }
+}
+
+#selectable {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0em;
+  li {
+    margin: 0 auto;
+    padding: 0.2em;
+    font-size: 1em;
+    text-align: center;
+    width: 80%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .ui-selecting {
+    background: #FECA40;
+  }
+  .ui-selected {
+    background: #F39814;
+    color: white;
+  }
+}
+
+section {
+  &#users-listing {
+    border: 1px solid black;
+    width: 29%;
+    height: 35em;
+    float: left;
+    text-align: center;
+    margin: 0em;
+    margin-bottom: 1em;
+    padding: 0em;
+    overflow-y: scroll;
+    .pagination {
+      text-align: center;
+    }
+  }
+  &#result {
+    border: 1px solid black;
+    width: auto;
+    padding: 1em;
+    float: right;
+  }
+  &#master {
+    margin: 0 auto;
+    margin-bottom: 1em;
+  }
+}

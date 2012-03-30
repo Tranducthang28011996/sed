@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   scope :advisors, lambda { with_role("advisor") }
   scope :professors, lambda { with_role("professor") }
   scope :gods, lambda { with_role("god") }
+  scope :with_name, lambda { |term| where("users.name LIKE ?", "%#{term}%") }
 
   #default_scope order('users.name ASC')
 
@@ -82,6 +83,15 @@ class User < ActiveRecord::Base
 
   def role?(role)
     roles.include? role.to_s
+  end
+
+  # they can only search for students
+  def self.search(search, page = nil)
+    if search
+      students.with_name(search).paginate(:page => page, :per_page => 15)
+    else
+      students.paginate(:page => page)
+    end
   end
 end
 

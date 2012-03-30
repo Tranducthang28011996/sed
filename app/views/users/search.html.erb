@@ -1,0 +1,9 @@
+<div id="user-search">
+  <%= form_tag user_search_path, :method => :get, :id => "user_search", do %>
+    <%= text_field_tag :search, params[:search], :size => 40 %>
+
+    <div id="students">
+      <%= render "students" %>
+    </div>
+  <% end %>
+</div>

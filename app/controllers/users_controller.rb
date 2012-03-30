@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
-  helper_method :sort_column, :sort_direction, :sort_scope
-
   #SPEC: 2.1 Student Column
   #SPEC: 2.1.1 List all students(users)
   #SPEC: 3.1.2 Sorting options
@@ -103,18 +101,7 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  private
-
-  def sort_column
-    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
-  def sort_scope
-    flash[:alert] = "sort scope got #{params[:scope]}"
-    %w[students advisors professors gods].include?(params[:scope]) ? params[:scope] : "default"
+  def search
+    @students = User.search(params[:search], params[:page]).order(sort_column + " " + sort_direction)
   end
 end
