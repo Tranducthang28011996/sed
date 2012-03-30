@@ -7,8 +7,6 @@
     <th><%= sortable "email", params[:scope] %> <em> (Click to Edit)</em></th>
   </tr>
   <tr><%= will_paginate @students, :previous_label => "<<", :next_label => ">>" %></tr>
-
-  <% cache "students_search" do %>
   <% for student in @students %>
     <tr>
       <% if can? :show, student %>
@@ -18,6 +16,5 @@
         <td><%= link_to student.email, edit_user_path(student) %></td>
       <% end %>
     </tr>
-  <% end %>
   <% end %>
 </table>

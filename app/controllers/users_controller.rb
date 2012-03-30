@@ -35,7 +35,6 @@ class UsersController < ApplicationController
 
   def create
     if @user.save
-      expire_fragment("students_search")
       redirect_to @user, notice: 'User was successfully created.'
     else
       render "new"
@@ -63,7 +62,6 @@ class UsersController < ApplicationController
   def update
     authorize! :assign_roles, @user if params[:user][:assign_roles]
     if @user.update_attributes(params[:user])
-      expire_fragment("students_search")
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render "edit"
@@ -75,7 +73,6 @@ class UsersController < ApplicationController
     authorize! :update_password, User, :id => current_user.id
     if @user.authenticate(params[:user][:current_password])
       if @user.update_attributes( :password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation] )
-        expire_fragment("students_search")
         redirect_to @user, notice: "Password was updated!"
       else
         render "edit_password"
@@ -91,7 +88,6 @@ class UsersController < ApplicationController
     @user = User.find_by_id(current_user.id)
     authorize! :update_my_details, User, :id => current_user.id
     if @user.update_attributes(params[:user])
-      expire_fragment("students_search")
       redirect_to @user, notice: 'Your information has been updated.'
     else
       render "edit_my_details"
