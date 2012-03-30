@@ -21,8 +21,12 @@
     <th class="left">Roles</th>
   </tr>
   <tr>
-    <td><%= @user.name %></td>
-    <td><%= link_to @user.email, edit_user_path(@user) %></td>
+    <% if can? :show, User %>
+      <td><%= link_to @user.name, @user %></td>
+    <% end %>
+    <% if can? :edit, User %>
+      <td><%= link_to @user.email, edit_user_path(@user) %></td>
+    <% end %>
     <% if can? :destroy, User %>
       <td>
         <%= link_to 'Destroy', @user, :class => "delete", confirm: 'Are you sure?', method: :delete %>

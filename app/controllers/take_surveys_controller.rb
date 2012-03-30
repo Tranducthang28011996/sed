@@ -1,9 +1,12 @@
 class TakeSurveysController < ApplicationController
+  #SPEC: 7.1: Adding TakeSurveysController
+  #SPEC: 7.1.1: Adding New Action
   def new
     @survey = Survey.find(params[:id]) if params[:id]
     authorize! :take, :survey
   end
 
+  #SPEC: 7.1.1.2: Adding Create action
   def create
     params[:response].each do |question, answer|
       current_user.responses.create :question_id => question, :answer_id => answer, :user_id => current_user.id
@@ -19,9 +22,11 @@ class TakeSurveysController < ApplicationController
     authorize! :create, :survey
   end
 
+  #SPEC: 7.1.1.3: Adding Edit action
   def edit
   end
 
+  #SPEC: 7.1.1.4: Adding Show action
   def show
     @survey = Survey.find(params[:id]) if params[:id]
     authorize! :show, :survey
