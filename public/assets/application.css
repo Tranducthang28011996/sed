@@ -208,62 +208,62 @@ a.delete:visited {
   color: red;
 }
 /* flash notices */
-/* line 3, ../../app/assets/stylesheets/custom.css.scss */
+/* line 8, ../../app/assets/stylesheets/custom.css.scss */
 .error, .alert, .notice, .success, .info {
   padding: 0.8em;
   margin-bottom: 1em;
   border: 2px solid #ddd;
 }
 
-/* line 4, ../../app/assets/stylesheets/custom.css.scss */
+/* line 9, ../../app/assets/stylesheets/custom.css.scss */
 .error, .alert {
   background: #fbe3e4;
   color: #8a1f11;
   border-color: #fbc2c4;
 }
 
-/* line 5, ../../app/assets/stylesheets/custom.css.scss */
+/* line 10, ../../app/assets/stylesheets/custom.css.scss */
 .notice {
   background: #fff6bf;
   color: #514721;
   border-color: #ffd324;
 }
 
-/* line 6, ../../app/assets/stylesheets/custom.css.scss */
+/* line 11, ../../app/assets/stylesheets/custom.css.scss */
 .success {
   background: #e6efc2;
   color: #264409;
   border-color: #c6d880;
 }
 
-/* line 7, ../../app/assets/stylesheets/custom.css.scss */
+/* line 12, ../../app/assets/stylesheets/custom.css.scss */
 .info {
   background: #d5edf8;
   color: #205791;
   border-color: #92cae4;
 }
 
-/* line 8, ../../app/assets/stylesheets/custom.css.scss */
+/* line 13, ../../app/assets/stylesheets/custom.css.scss */
 .error a, .alert a {
   color: #8a1f11;
 }
 
-/* line 9, ../../app/assets/stylesheets/custom.css.scss */
+/* line 14, ../../app/assets/stylesheets/custom.css.scss */
 .notice a {
   color: #514721;
 }
 
-/* line 10, ../../app/assets/stylesheets/custom.css.scss */
+/* line 15, ../../app/assets/stylesheets/custom.css.scss */
 .success a {
   color: #264409;
 }
 
-/* line 11, ../../app/assets/stylesheets/custom.css.scss */
+/* line 16, ../../app/assets/stylesheets/custom.css.scss */
 .info a {
   color: #205791;
 }
 
-/* line 12, ../../app/assets/stylesheets/custom.css.scss */
+/* line 17, ../../app/assets/stylesheets/custom.css.scss */
 .error, .alert, .notice, .success, .info {
   width: 50%;
   margin: 0 auto;
@@ -271,12 +271,12 @@ a.delete:visited {
   margin-bottom: 1em;
 }
 
-/* line 19, ../../app/assets/stylesheets/custom.css.scss */
+/* line 24, ../../app/assets/stylesheets/custom.css.scss */
 form#new_survey {
   margin-top: 1em;
 }
 
-/* line 24, ../../app/assets/stylesheets/custom.css.scss */
+/* line 29, ../../app/assets/stylesheets/custom.css.scss */
 span.my-response {
   background-color: #FF0000;
   padding: 3px;
@@ -285,11 +285,11 @@ span.my-response {
   font-weight: bold;
 }
 
-/* line 33, ../../app/assets/stylesheets/custom.css.scss */
+/* line 38, ../../app/assets/stylesheets/custom.css.scss */
 div.center {
   margin: 0 auto;
 }
-/* line 35, ../../app/assets/stylesheets/custom.css.scss */
+/* line 40, ../../app/assets/stylesheets/custom.css.scss */
 div.center h1 {
   text-align: center;
 }
@@ -654,11 +654,157 @@ form#email-confirm-new {
     width: 200px; /*must have*/
     height: 200px; /*must have*/
 }
+/* line 5, ../../app/assets/stylesheets/pages.css.scss */
+div #result {
+  clear: right;
+}
+
+/* line 10, ../../app/assets/stylesheets/pages.css.scss */
+#selectable {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0em;
+}
+/* line 14, ../../app/assets/stylesheets/pages.css.scss */
+#selectable li {
+  margin: 0 auto;
+  padding: 0.2em;
+  font-size: 1em;
+  text-align: center;
+  width: 80%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 23, ../../app/assets/stylesheets/pages.css.scss */
+#selectable .ui-selecting {
+  background: #FECA40;
+}
+/* line 26, ../../app/assets/stylesheets/pages.css.scss */
+#selectable .ui-selected {
+  background: #F39814;
+  color: white;
+}
+
+/* line 33, ../../app/assets/stylesheets/pages.css.scss */
+section#users-listing {
+  border: 1px solid black;
+  width: 29%;
+  height: 35em;
+  float: left;
+  text-align: center;
+  margin: 0em;
+  margin-bottom: 1em;
+  padding: 0em;
+  overflow-y: scroll;
+}
+/* line 43, ../../app/assets/stylesheets/pages.css.scss */
+section#users-listing .pagination {
+  text-align: center;
+}
+/* line 47, ../../app/assets/stylesheets/pages.css.scss */
+section#result {
+  border: 1px solid black;
+  width: auto;
+  padding: 1em;
+  float: right;
+}
+/* line 53, ../../app/assets/stylesheets/pages.css.scss */
+section#master {
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
 /* password_reset form */
 /* line 6, ../../app/assets/stylesheets/password_resets.css.scss */
 form {
   padding: 1em;
 }
+/* flash notices */
+/* line 8, ../../app/assets/stylesheets/custom.css.scss */
+.error, .alert, .notice, .success, .info {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #ddd;
+}
+
+/* line 9, ../../app/assets/stylesheets/custom.css.scss */
+.error, .alert {
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4;
+}
+
+/* line 10, ../../app/assets/stylesheets/custom.css.scss */
+.notice {
+  background: #fff6bf;
+  color: #514721;
+  border-color: #ffd324;
+}
+
+/* line 11, ../../app/assets/stylesheets/custom.css.scss */
+.success {
+  background: #e6efc2;
+  color: #264409;
+  border-color: #c6d880;
+}
+
+/* line 12, ../../app/assets/stylesheets/custom.css.scss */
+.info {
+  background: #d5edf8;
+  color: #205791;
+  border-color: #92cae4;
+}
+
+/* line 13, ../../app/assets/stylesheets/custom.css.scss */
+.error a, .alert a {
+  color: #8a1f11;
+}
+
+/* line 14, ../../app/assets/stylesheets/custom.css.scss */
+.notice a {
+  color: #514721;
+}
+
+/* line 15, ../../app/assets/stylesheets/custom.css.scss */
+.success a {
+  color: #264409;
+}
+
+/* line 16, ../../app/assets/stylesheets/custom.css.scss */
+.info a {
+  color: #205791;
+}
+
+/* line 17, ../../app/assets/stylesheets/custom.css.scss */
+.error, .alert, .notice, .success, .info {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* line 24, ../../app/assets/stylesheets/custom.css.scss */
+form#new_survey {
+  margin-top: 1em;
+}
+
+/* line 29, ../../app/assets/stylesheets/custom.css.scss */
+span.my-response {
+  background-color: #FF0000;
+  padding: 3px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+/* line 38, ../../app/assets/stylesheets/custom.css.scss */
+div.center {
+  margin: 0 auto;
+}
+/* line 40, ../../app/assets/stylesheets/custom.css.scss */
+div.center h1 {
+  text-align: center;
+}
+
 /* SPEC: 6.1.1*/
 /* line 6, ../../app/assets/stylesheets/users.css.scss */
 form#edit_my_details {
@@ -672,59 +818,12 @@ table {
   background-color: #cfe2f3;
   margin-bottom: 1em;
 }
-
-/* line 15, ../../app/assets/stylesheets/users.css.scss */
-th, td {
+/* line 14, ../../app/assets/stylesheets/users.css.scss */
+table th, table td {
   padding: .5em;
 }
 
-/* line 18, ../../app/assets/stylesheets/users.css.scss */
-.god {
-  border: 1px solid black;
-  margin: 0 auto;
-  width: 80%;
-  background-color: red;
-  padding: 0.4em;
-  color: white;
-  font-weight: bold;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-/* line 29, ../../app/assets/stylesheets/users.css.scss */
-.student {
-  background-color: green;
-  border: 1px solid black;
-  margin: 0 auto;
-  width: 80%;
-  padding: 0.4em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-/* line 38, ../../app/assets/stylesheets/users.css.scss */
-.advisor {
-  background-color: blue;
-  border: 1px solid black;
-  margin: 0 auto;
-  width: 80%;
-  padding: 0.4em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-/* line 47, ../../app/assets/stylesheets/users.css.scss */
-.professor {
-  background-color: orange;
-  border: 1px solid black;
-  margin: 0 auto;
-  width: 80%;
-  padding: 0.4em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-/* line 56, ../../app/assets/stylesheets/users.css.scss */
+/* line 19, ../../app/assets/stylesheets/users.css.scss */
 .pagination {
   background: #cfe2f3;
   cursor: default;
@@ -735,7 +834,7 @@ th, td {
   /* self-clearing method: */
 }
 
-/* line 64, ../../app/assets/stylesheets/users.css.scss */
+/* line 27, ../../app/assets/stylesheets/users.css.scss */
 .pagination a, .pagination span, .pagination em {
   padding: 0.2em 0.5em;
   display: block;
@@ -743,13 +842,13 @@ th, td {
   margin-right: 1px;
 }
 
-/* line 69, ../../app/assets/stylesheets/users.css.scss */
+/* line 32, ../../app/assets/stylesheets/users.css.scss */
 .pagination .disabled {
   color: #999999;
   border: 1px solid #dddddd;
 }
 
-/* line 72, ../../app/assets/stylesheets/users.css.scss */
+/* line 35, ../../app/assets/stylesheets/users.css.scss */
 .pagination .current {
   font-style: normal;
   font-weight: bold;
@@ -758,20 +857,20 @@ th, td {
   border: 1px solid #2e6ab1;
 }
 
-/* line 78, ../../app/assets/stylesheets/users.css.scss */
+/* line 41, ../../app/assets/stylesheets/users.css.scss */
 .pagination a {
   text-decoration: none;
   color: #105cb6;
   border: 1px solid #9aafe5;
 }
 
-/* line 82, ../../app/assets/stylesheets/users.css.scss */
+/* line 45, ../../app/assets/stylesheets/users.css.scss */
 .pagination a:hover, .pagination a:focus {
   color: #000033;
   border-color: #000033;
 }
 
-/* line 85, ../../app/assets/stylesheets/users.css.scss */
+/* line 48, ../../app/assets/stylesheets/users.css.scss */
 .pagination .page_info {
   background: #2e6ab1;
   color: white;
@@ -781,14 +880,14 @@ th, td {
   text-align: center;
 }
 
-/* line 92, ../../app/assets/stylesheets/users.css.scss */
+/* line 55, ../../app/assets/stylesheets/users.css.scss */
 .pagination .page_info b {
   color: #000033;
   background: #6aa6ed;
   padding: 0.1em 0.25em;
 }
 
-/* line 96, ../../app/assets/stylesheets/users.css.scss */
+/* line 59, ../../app/assets/stylesheets/users.css.scss */
 .pagination:after {
   content: ".";
   display: block;
@@ -797,12 +896,38 @@ th, td {
   visibility: hidden;
 }
 
-/* line 102, ../../app/assets/stylesheets/users.css.scss */
+/* line 65, ../../app/assets/stylesheets/users.css.scss */
 * html .pagination {
   height: 1%;
 }
 
-/* line 104, ../../app/assets/stylesheets/users.css.scss */
+/* line 67, ../../app/assets/stylesheets/users.css.scss */
 *:first-child + html .pagination {
   overflow: hidden;
+}
+
+/* line 75, ../../app/assets/stylesheets/users.css.scss */
+.pretty th .sort_current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+/* line 80, ../../app/assets/stylesheets/users.css.scss */
+.pretty th .asc {
+  background-image: url(images/up_arrow.gif);
+}
+/* line 83, ../../app/assets/stylesheets/users.css.scss */
+.pretty th .desc {
+  background-image: url(images/down_arrow.gif);
+}
+
+/* line 90, ../../app/assets/stylesheets/users.css.scss */
+form#user_search {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid black;
+  clear: both;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }

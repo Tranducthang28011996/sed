@@ -21409,46 +21409,68 @@ $.effects.transfer = function(o) {
 (function() {
 
   jQuery(function() {
-    return $('.info').delay(3000).slideUp();
-  });
-
-}).call(this);
-(function() {
-
-
-
-}).call(this);
-(function() {
-
-
-
-}).call(this);
-(function() {
-
-
-
-}).call(this);
-(function() {
-
-
-
-}).call(this);
-(function() {
-
-
-
-}).call(this);
-(function() {
-
-  jQuery(function() {
-    return $("input#available_at").datepicker();
-  });
-
-}).call(this);
-(function() {
-
-  jQuery(function() {
+    $('.info').delay(3000).slideUp();
     return $('.notice').delay(3000).slideUp();
+  });
+
+}).call(this);
+(function() {
+
+
+
+}).call(this);
+(function() {
+
+  jQuery(function() {
+    return $("#selectable").selectable({
+      selected: function() {
+        return alert($("li.ui-selected").find("input[type=hidden]").val());
+      }
+    });
+  });
+
+}).call(this);
+(function() {
+
+
+
+}).call(this);
+(function() {
+
+
+
+}).call(this);
+(function() {
+
+
+
+}).call(this);
+(function() {
+
+  jQuery(function() {
+    return $("input#available_at").datepicker({
+      minDate: '-1y',
+      maxDate: '+2y',
+      dateFormat: 'd M yy'
+    });
+  });
+
+}).call(this);
+(function() {
+
+  jQuery(function() {
+    $('#students th a').live('click', function(event) {
+      $.getScript(this.href);
+      return false;
+    });
+    $('#students .pagination a').live('click', function(event) {
+      $.getScript(this.href);
+      return false;
+    });
+    return $('#user_search input').keyup(function() {
+      $.get($('#user_search').attr('action'), $('#user_search').serialize(), null, 'script');
+      return false;
+    });
   });
 
 }).call(this);
