@@ -27,6 +27,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @student = User.students.where(:id => params[:id])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js { render :layout => false }
+    end
   end
 
   #SPEC: 2.1.3 Add a new User(student)

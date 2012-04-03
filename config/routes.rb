@@ -11,6 +11,9 @@ Sed::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
   resources :users do
+    member do
+      get :embed
+    end
     resources :responses
   end
   resources :password_resets

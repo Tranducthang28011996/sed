@@ -21421,17 +21421,6 @@ $.effects.transfer = function(o) {
 }).call(this);
 (function() {
 
-  jQuery(function() {
-    return $("#selectable").selectable({
-      selected: function() {
-        return alert($("li.ui-selected").find("input[type=hidden]").val());
-      }
-    });
-  });
-
-}).call(this);
-(function() {
-
 
 
 }).call(this);

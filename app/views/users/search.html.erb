@@ -1,5 +1,5 @@
 <div id="user-search">
-  <%= form_tag user_search_path, :method => :get, :id => "user_search", do %>
+  <%= form_tag user_search_path, :method => :get, :id => "user_search", :remote => true do %>
     <%= text_field_tag :search, params[:search], :size => 40 %>
 
     <div id="students">
