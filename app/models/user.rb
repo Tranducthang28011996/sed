@@ -86,11 +86,11 @@ class User < ActiveRecord::Base
   end
 
   # they can only search for students
-  def self.search(search, page = nil)
+  def self.search(search, page = nil, per_page = 30)
     if search
-      students.with_name(search).paginate(:page => page, :per_page => 15)
+      students.with_name(search).paginate(:page => page, :per_page => per_page )
     else
-      students.paginate(:page => page)
+      students.paginate(:page => page, :per_page => per_page)
     end
   end
 end

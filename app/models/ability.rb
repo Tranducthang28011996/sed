@@ -13,6 +13,7 @@ class Ability
       can :index, Response, :user_id => user.id
       cannot :assign_roles, User
       cannot :destroy, User
+      can :list, :students
     elsif user.role? :advisor
       can [:read, :show, :edit, :update], User, :id => user.id, :roles_mask => user.roles_mask
       cannot :destroy, User, :id => user.id, :roles_mask => user.roles_mask

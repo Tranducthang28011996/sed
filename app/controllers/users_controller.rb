@@ -107,6 +107,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @students = User.search(params[:search], params[:page]).order(sort_column + " " + sort_direction)
+    @students = User.search(params[:search], params[:page], 30).order(sort_column + " " + sort_direction)
+    authorize! :search, User
   end
 end
