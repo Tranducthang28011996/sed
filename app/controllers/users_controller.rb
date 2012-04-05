@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  skip_load_resource :only => :destroy
 
   #SPEC: 2.1 Student Column
   #SPEC: 2.1.1 List all students(users)
@@ -36,6 +37,10 @@ class UsersController < ApplicationController
 
   #SPEC: 2.1.3 Add a new User(student)
   def new
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js { render :new, :layout => false }
+    end
   end
 
   def create
@@ -101,9 +106,13 @@ class UsersController < ApplicationController
 
   #SPEC: 2.1.4 Delete a User(student)
   def destroy
-    authorize! :destroy, User, :id => current_user.id
+    authorize! :destroy, User
+    @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url
+    respond_to do |format|
+      format.html
+      format.js { flash[:notice] = "User Destroyed" }
+    end
   end
 
   def search

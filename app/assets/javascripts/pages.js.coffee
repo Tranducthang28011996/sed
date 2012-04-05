@@ -23,3 +23,7 @@ jQuery ->
   $("div#foo ul li.hide").click (event) ->
     $("div#foo").animate
       width: 'toggle'
+
+  $("div#foo ul li.remote a").click (event) ->
+    $.getScript(this.href);
+    return false;
