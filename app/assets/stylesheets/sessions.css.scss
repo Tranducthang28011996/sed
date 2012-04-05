@@ -1,3 +1,27 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "sass_custom.css.scss";
+
+form {
+  &#new_sessions_form {
+    @include rounded-corners(10px);
+    background-color: $form_color_bg_standard;
+    padding: 1em;
+    margin-top: 1em;
+    text-align: justify;
+    font-size: 1em;
+    margin-left: 2em;
+  }
+}
+
+section {
+  &#sessions_new {
+    @include rounded-corners(10px);
+    background-color: $form_color_bg_standard;
+    border: 2px solid $border_color_standard;
+    width: 25em;
+    padding: 1em;
+    margin-top: 1em;
+  }
+}

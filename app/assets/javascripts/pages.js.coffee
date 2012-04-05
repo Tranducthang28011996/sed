@@ -14,11 +14,12 @@ jQuery ->
     return false;
 
   $("section#user-flyout").click (event) ->
-    alert("you clicked the flyout!")
+    $("div#user_flyout_menu").animate
+      width: 'toggle'
 
-  $("div#user-flyout-menu").click (event) ->
+  $("div#user_flyout_menu").click (event) ->
     (event).stopPropagation();
 
-  $("div#user-flyout-menu ul li.hide").click (event) ->
-    $("div#user-flyout-menu").animate
+  $("div#user_flyout_menu ul li.hide").click (event) ->
+    $("div#user_flyout_menu").animate
       width: 'toggle'
