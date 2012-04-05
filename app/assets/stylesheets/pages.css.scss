@@ -1,12 +1,6 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div {
-  #result {
-    clear: right;
-  }
-}
-
 #selectable {
   list-style-type: none;
   margin: 0 auto;
@@ -32,9 +26,8 @@ div {
 section {
   &#users-listing {
     border: 1px solid black;
-    width: 29%;
+    width: 28%;
     height: 35em;
-    float: left;
     text-align: center;
     margin: 0em;
     margin-bottom: 1em;
@@ -46,12 +39,40 @@ section {
   }
   &#result {
     border: 1px solid black;
-    width: auto;
-    padding: 1em;
-    float: right;
+    width: 68%;
+    padding: 0.5em;
+    margin: 0;
+  }
+  &#user-flyout {
+    background-color: orange;
+    width: 20px;
+    height: 35em;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 28.5%;
   }
   &#master {
     margin: 0 auto;
     margin-bottom: 1em;
+  }
+}
+div {
+  &#foo {
+    width: 4em;
+    height: 35em;
+    background-color: orange;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    &li {
+      list-style-type: none;
+      position: relative;
+      right: 2em;
+      padding: 0;
+      padding-top: 0.5em;
+      margin: 0;
+      text-align: left;
+    }
   }
 }

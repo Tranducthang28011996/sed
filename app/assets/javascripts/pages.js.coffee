@@ -13,3 +13,13 @@ jQuery ->
     $.getScript(this.href);
     return false;
 
+  $("section#user-flyout").click (event) ->
+    $("div#foo").animate
+      width: 'toggle'
+
+  $("div#foo").click (event) ->
+    (event).stopPropagation();
+
+  $("div#foo ul li.hide").click (event) ->
+    $("div#foo").animate
+      width: 'toggle'
