@@ -2,7 +2,7 @@
 <%= render 'surveys/links' %>
 
 <%= markdown "###{yield(:title)}" %>
-<table class="nice_round">
+<table>
   <tr>
     <th>Name <em>(Click to Show)</em></th>
     <% if can? :list_published, Survey %>

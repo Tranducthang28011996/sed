@@ -3,7 +3,7 @@
 <%= markdown "### Student: #{current_user.name}" %>
 <%= markdown "### for: #{@survey.name.inspect}" %>
 
-<table class="nice_round">
+<table>
   <tr><td>
   <ol>
   <% @survey.questions.each do |question| %>

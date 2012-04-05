@@ -1,5 +1,5 @@
 <%= content_for :user_sort_links do %>
-  <nav class="nice_round" id="users-sort-links">
+  <nav id="users-sort-links">
     <ul>
       <% if can? :list, :students %>
         <li><%= sortable "name", "students", "Show Students" %> |</li>

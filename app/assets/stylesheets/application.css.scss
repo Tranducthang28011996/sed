@@ -11,161 +11,209 @@
  *= require_self
  *= require_tree .
 */
+@import "sass_custom.css.scss";
+
+/* global style */
 * {
+  margin: 0 auto;
+  padding: 0em;
   text-align: justify;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 1em;
-  padding: 0;
-  margin: 0;
+  font-family: "Arial", "Helvetica", "Sans-Serif";
+  z-index: -1;
 }
-#master {
+
+/* links in general */
+a {
+  color: $link_color;
+  text-decoration: none;
+  font-weight: bold;
+  .delete {
+    color: $link_color_delete;
+  }
+  &:hover {
+    color: $link_color_hover;
+  }
+  &:visited {
+    color: $link_color_visited;
+  }
+}
+/* any form of list-style navigation */
+ul {
+  &li {
+    display: inline-block;
+    padding-left: 0.5em;
+    &a:hover {
+      color: $link_color_hover;
+    }
+    &:visited {
+      color: $link_color_visited;
+    }
+  }
+}
+
+/* ordered list */
+ol {
+  &#selectable {
+    list-style-type: none;
+    &li {
+      text-align: center;
+      width: 80%;
+      margin-bottom: 0.5em;
+      @include rounded-corners(10px);
+    }
+    .ui-selecting {
+      background: #FECA40;
+    }
+    .ui-selected {
+      background: #F39814;
+      color: white;
+    }
+  }
+}
+
+div {
+  &#master {
+    margin: 0 auto;
+    text-align: center;
+  }
+  &#menu_links {
+    width: 15em;
+    float: left;
+  }
+  &#current_user {
+    clear: right;
+    float: right;
+  }
+  &#user-flyout-menu {
+    width: 4em;
+    height: 35em;
+    background-color: $nav_color_bg;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    display: none;
+    border: 1px solid $border_color_standard;
+    border-left: none;
+    &li {
+      list-style-type: none;
+      padding: 0;
+      padding-top: 0.5em;
+      margin: 0;
+      text-align: left;
+    }
+  }
+}
+
+/* development mode debug window pane */
+pre {
+  &.debug_dump {
+    background-color: $bg_color_debug_dump;
+    font-weight: bold;
+    border: 1px dashed black;
+    padding: 0.5em;
+    width: 50%;
+    margin-top: 1em;
+  }
 }
 
 header {
+  z-index: 1;
+  &nav {
+    background-color: $nav_color_bg;
+    height: 1.5em;
+    padding-right: 0.5em;
+    padding-top: 0.4em;
+    border-bottom: 3px solid darken($nav_color_bg, 10%);
+  }
+}
+
+section {
+  &#master {
+    margin-top: 0.1em;
+  }
+  &#users-listing {
+    border: 1px solid $border_color_standard;
+    width: 27%;
+    height: 40em;
+    margin: 0;
+    margin-left: 0.2em;
+    overflow-y: scroll;
+  }
+  &#user-flyout {
+    background-color: $nav_color_bg;
+    border: 1px solid $border_color_standard;
+    border-left: none;
+    width: 20px;
+    height: 40em;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 27.1%;
+    top: 2.1em;
+    clear: both;
+  }
+
+  &#result {
+    border: 1px solid $border_color_standard;
+    border-top: none;
+    padding: 0.5em;
+    margin: 0;
+    position: absolute;
+    top: 2.1em;
+    right: 0.1em;
+    width: 67%;
+  }
+}
+
+/* pagination */
+.pagination {
+  border: 1px solid $border_color_standard;
+  background: #cfe2f3;
+  cursor: default;
+  margin: 0 auto;
   margin-top: 1em;
   margin-bottom: 1em;
-}
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-/* nav using ul li */
-nav {
-  border: 1px solid black;
-  margin: 0 auto;
-  background-color:#cfe2f3;
-  white-space: nowrap;
-}
-nav ul {
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 0;
-}
-
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-  color: #09c;
-}
-
-nav ul li a:visited {
-  color: #09c;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-a {
-  color: #09c;
-  font-weight: bold;
-  text-decoration: underline;
-  &:visited {
-    color: #666; }
-  &:hover {
-    color: #fff;
-    background-color: #000; }
-}
-
-#menu_links {
-  clear: left;
-  float: left;
-  padding: .5em;
-  text-align: center;
-}
-#current_user {
-  clear: right;
-  float: right;
-  padding: .5em;
-  text-align: center;
-}
-.clear {
-  clear: both;
-}
-#wrapper {
-  border: 2px solid black;
-  margin: 0 auto;
-  margin-bottom: 1em;
-  margin-top: 1em;
-  width: 40%;
-  padding: 1em;
-  background-color:#cfe2f3;
-}
-
-.round, form.edit_user, form.new_user {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border: 1px solid black;
-  padding: 1em;
-}
-.nice_round {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border: 1px solid black;
-}
-.debug_dump {
-  border: 2px dashed black;
-  width: 80%;
-  margin: 0 auto;
-}
-
-h2 {
-  text-align:center;
-  font-size : 2em;
-}
-
-h3 {
-  text-align:center;
-  color: #000000 ;
-  font-size : 1em;
-}
-.short {
-  padding: .2em;
-  float: left;
-}
-div {
-  &.field, &.actions {
-    margin: 0 auto;
-    margin-bottom: 10px;
-  }}
-
-form {
-  margin: 0 auto;
-  background-color:#cfe2f3;
   width: 70%;
-  margin-bottom: 1em;
-  padding: .2em;
-}
-
-em, i {
-  font-style: italic;
-  font-size: .8em;
-}
-div.indent {
-  margin-left: 2em;
-}
-nav#users-sort-links {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-a.delete{
-  color: red;
-  &:hover {
-    color: red;
-    background-color: orange;
+  /* self-clearing method: */ }
+  .pagination a, .pagination span, .pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .pagination .current {
+    font-style: normal;
     font-weight: bold;
-  }
-  &:visited {
-    color: red;
-  }
-}
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+  .pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+    .pagination a:hover, .pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .pagination {
+    height: 1%; }
+  *:first-child + html .pagination {
+    overflow: hidden; }

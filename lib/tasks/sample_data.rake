@@ -9,7 +9,7 @@ namespace :db do
     #create the specified amount of users
     99.times do |n|
       name = Faker::Name.name
-      email = "example-#{n+1}@example.com"
+      email = "example-#{n}@example.com"
       password = "password"
       User.create!( :name => name,
                     :email => email,

@@ -1,6 +1,6 @@
 <%= title "Forgot Password?" %>
 <%= markdown "###{yield(:title)}" %>
-<%= form_tag password_resets_path, :class => "nice_round", :method => :post do %>
+<%= form_tag password_resets_path, :method => :post do %>
   <div class="field">
       <%= label_tag :email %>
       <%= text_field_tag :email, params[:email], :size => "40" %><br />

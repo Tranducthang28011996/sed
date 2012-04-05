@@ -1,7 +1,7 @@
 <% unless survey_completed?(current_user, @survey) %>
   <%= title "Taking Survey: #{@survey.name}" %>
   <%= markdown "###{yield(:title)}" %>
-  <%= form_tag take_surveys_path, :class => 'nice_round', :method => :post do %>
+  <%= form_tag take_surveys_path, :method => :post do %>
     <ol>
     <% @survey.questions.each do |question| %>
       <% if current_user.responses.find_by_question_id(question.id).nil? %>
