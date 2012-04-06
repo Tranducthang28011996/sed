@@ -12,14 +12,11 @@ jQuery ->
   $('#user-list-content .pagination a').live 'click', (event) ->
     $.getScript(this.href);
     return false;
-
   $("section#user-flyout").click (event) ->
     $("div#user_flyout_menu").animate
       width: 'toggle'
-
   $("div#user_flyout_menu").click (event) ->
     (event).stopPropagation();
-
   $("div#user_flyout_menu ul li.hide").click (event) ->
     $("div#user_flyout_menu").animate
       width: 'toggle'
