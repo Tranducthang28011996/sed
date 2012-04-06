@@ -1,20 +1,61 @@
+/* standard link colors */
 $link_color: #09c;
 $link_color_visited: #0066CC;
 $link_color_hover: #000;
 $link_color_delete: #FF0000;
-$bg_color_debug_dump: #EEE;
-$nav_color_bg: #FFA500;
-$border_color_standard: #000000;
 
+/* debug dump colors */
+$bg_color_debug_dump: #EEE;
+
+/* standard navigation colors */
+$nav_color_bg: #FFA500;
+
+/* (un)ordered list link colors */
+$ui_selecting_bg_color: #FECA40;
+$ui_selected_bg_color: #F39814;
+$ui_selected_color: #FFFFFF;
+
+/* pagination colors */
+$pagination_bg_color: #cfe2f3;
+$pagination_disabled_color: #999999;
+$pagination_current_bg_color: #2e6ab1;
+$pagination_current_color: #FFFFFF;
+$pagination_link_color: #105cb6;
+$pagination_link_border_color: #9aafe5;
+$pagination_link_hover_focus_color: #000033;
+$pagination_link_hover_focus_border_color: #000033;
+$pagination_page_info_bg_color: #2e6ab1;
+$pagination_page_info_color: #FFFFFF;
+$pagination_page_info_b_bg_color: #6aa6ed;
+$pagination_page_info_b_color: #000033;
+
+
+
+
+/* border colors */
+$border_color_standard: #000000;
+$pagination_disabled_border_color: #dddddd;
+$pagination_current_border_color: #2e6ab1;
+
+/* the flyout menu colors */
 $flyout_menu_color: #FFA500;
 
+/* form colors */
 $form_color_bg_standard: #CFE2F3;
 
 /* header colors */
 $header_2_color: #000000;
 $header_3_color: #000000;
 
-
+/* flash notice colors */
+$flash_error_alert_bg_color: #fbe3e4;
+$flash_error_alert_color: #8a1f11;
+$flash_notice_bg_color: #fff6bf;
+$flash_notice_color: #514721;
+$flash_success_bg_color: #e6efc2;
+$flash_success_color: #264409;
+$flash_info_bg_color: #d5edf8;
+$flash_info_color: #205791;
 
 /* rounded corners SASS mixin */
 @mixin rounded-corners($radius) {

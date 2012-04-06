@@ -2,8 +2,5 @@
   <% @student.each do |student| %>
     <%= student.name.inspect %><br />
     <%= student.email.inspect %>
-    <% if can? :destroy, student %>
-      <%= link_to "Destroy", student, :class => "delete", confirm: 'Are you sure?', method: :delete, :remote => true %>
-    <% end %>
   <% end %>
 </div>
