@@ -96,14 +96,14 @@ form {
   }
   input[type=checkbox] {
   }
-  input[type=text], &input[type=password] {
+  input[type=text], input[type=password] {
     font-size: 1.1em;
   }
   textarea {
     font-size: 1.1em;
   }
   #user_search {
-    &input[type=text] {
+    input[type=text] {
       margin: 0 auto;
       margin-left: 1em;
     }
@@ -168,7 +168,7 @@ pre {
 
 header {
   z-index: 1;
-  &nav {
+  nav {
     @include rounded-corners(10px);
     background-color: $nav_color_bg;
     height: 1.5em;
@@ -227,7 +227,7 @@ section {
   margin-bottom: 1em;
   width: 100%;
   /* self-clearing method: */
-  &a, &span, &em {
+  a, span, em {
     padding: 0.2em 0.5em;
     display: block;
     float: left;
@@ -242,12 +242,12 @@ section {
     color: $pagination_current_color;
     border: 1px solid $pagination_current_border_color;
   }
-  &a {
+  a {
     text-decoration: none;
     color: $pagination_link_color;
     border: 1px solid $pagination_link_border_color;
   }
-  &a:hover, &a:focus {
+  a:hover, a:focus {
     color: $pagination_link_hover_focus_color;
     border-color: $pagination_link_hover_focus_border_color;
   }
@@ -258,7 +258,7 @@ section {
     width: 22em;
     margin-bottom: 0.3em;
     text-align: center;
-    &b {
+    b {
       color: $pagination_page_info_b_color;
       background: $pagination_page_info_b_bg_color;
       padding: 0.1em 0.25em;
@@ -322,9 +322,9 @@ table {
   border: 1px solid $border_color_standard;
   padding: 0.5em;
   width: 100%;
-  &td, &th {
+  td, th {
     padding: 0.5em;
-    &a.delete {
+    a.delete {
       color: red;
     }
   }
