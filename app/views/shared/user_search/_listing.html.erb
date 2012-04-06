@@ -1,6 +1,6 @@
 <section id="users-listing">
   <%= form_tag root_path, :method => :get, :id => "user_search", :remote => true do %>
-    <%= text_field_tag :search, params[:search], :size => 24 %>
+    <%= text_field_tag :search, params[:search], :size => 20 %>
   <% end %>
 
   <div id="user-list-content">
