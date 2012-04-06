@@ -40,6 +40,10 @@ h3 {
   color: $header_3_color;
   font-size: 1em;
 }
+/* stuff to do with fonts, emphasis, etc */
+em {
+  font-size: 0.8em;
+}
 
 /* links in general */
 a {
@@ -58,15 +62,9 @@ a {
 }
 /* any kind of list-style navigation */
 ul {
-  &li {
+  li {
     display: inline-block;
     padding-left: 0.5em;
-    &a:hover {
-      color: $link_color_hover;
-    }
-    &:visited {
-      color: $link_color_visited;
-    }
   }
 }
 
@@ -74,7 +72,7 @@ ul {
 ol {
   &#selectable {
     list-style-type: none;
-    &li {
+    li {
       text-align: center;
       width: 80%;
       margin-bottom: 0.5em;
@@ -100,6 +98,19 @@ form {
   }
   &input[type=text], &input[type=password] {
     font-size: 1.1em;
+  }
+  &#user_search {
+    &input[type=text] {
+      margin: 0 auto;
+      margin-left: 1em;
+    }
+    @include rounded-corners(10px);
+    border: 1px solid $border_color_standard;
+    clear: both;
+    margin: 0 auto;
+    background-color: $form_color_bg_standard;
+    margin-top: 0.3em;
+    margin-bottom: 1em;
   }
 }
 
@@ -154,6 +165,7 @@ pre {
 header {
   z-index: 1;
   &nav {
+    @include rounded-corners(10px);
     background-color: $nav_color_bg;
     height: 1.5em;
     padding-right: 0.5em;
@@ -208,7 +220,7 @@ section {
   margin: 0 auto;
   margin-top: 1em;
   margin-bottom: 1em;
-  width: 70%;
+  width: 100%;
   /* self-clearing method: */
   &a, &span, &em {
     padding: 0.2em 0.5em;
@@ -269,7 +281,7 @@ section {
 /* errors, warnings, and info */
 .error, .alert, .notice, .success, .info {
   padding: 0.8em;
-  z-index: 9999;
+  z-index: 99999999;
   width: 50%;
   margin: 0 auto;
   margin-top: 1em;
@@ -297,4 +309,39 @@ section {
   background-color: $flash_info_bg_color;
   color: $flash_info_color;
   border-color: darken($flash_info_bg_color, 10%);
+}
+
+/* table elements */
+table {
+  @include rounded-corners(10px);
+  background-color: $form_color_bg_standard;
+  border: 1px solid $border_color_standard;
+  padding: 0.5em;
+  width: 100%;
+  &td, &th {
+    padding: 0.5em;
+    &a.delete {
+      color: red;
+    }
+  }
+}
+
+/* custom sorting links */
+.pretty {
+  th {
+    background-color: darken($form_color_bg_standard, 10%);
+    @include rounded-corners(10px);
+    .sort_current {
+      padding-right: 12px;
+      background-repeat: no-repeat;
+      background-position: right center;
+      font-weight: bold;
+    }
+    .asc {
+      background-image: url(images/up_arrow.gif);
+    }
+    .desc {
+      background-image: url(images/down_arrow.gif);
+    }
+  }
 }

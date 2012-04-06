@@ -1,9 +1,17 @@
-<div id="user-search">
-  <%= form_tag user_search_path, :method => :get, :id => "user_search", :remote => true do %>
-    <%= text_field_tag :search, params[:search], :size => 40 %>
+<div class="center">
+  <section id="user_search_full">
+    <div id="user_search_full">
+      <%= form_tag user_search_path, :method => :get, :id => "user_search_full", :remote => true do %>
+        <%= text_field_tag :search, params[:search], :size => 40 %>
+        <%= hidden_field_tag :direction, params[:direction] %>
+        <%= hidden_field_tag :sort, params[:sort] %>
+        <%= hidden_field_tag :scope, params[:scope] %>
+        <%= submit_tag "Search", :name => nil %>
+      <% end %>
+    </div>
 
     <div id="students">
       <%= render "students" %>
     </div>
-  <% end %>
+  </section>
 </div>

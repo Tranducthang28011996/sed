@@ -1,12 +1,16 @@
 <%= title "Forgot Password?" %>
 <%= markdown "###{yield(:title)}" %>
+<div class="center">
+  <section id="user_form_partial">
 <%= form_tag password_resets_path, :method => :post do %>
   <div class="field">
       <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email], :size => "40" %><br />
+      <%= text_field_tag :email, params[:email], :size => "35" %><br />
       <em>(You will receive an email containing instructions on how to reset your password.)</em><br />
   </div>
   <div class="actions">
     <%= submit_tag "Reset Password" %>
   </div>
 <% end %>
+</section>
+</div>

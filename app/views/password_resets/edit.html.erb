@@ -1,5 +1,8 @@
 <%= title "Reset Password" %>
 <%= markdown "###{yield(:title)}" %>
+
+<div class="center">
+  <section id="user_form_partial">
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
   <%= render "shared/error_messages", :target => @user %>
   <div class="field">
@@ -14,3 +17,5 @@
     <%= f.submit "Update Password" %>
   </div>
 <% end %>
+</section>
+</div>

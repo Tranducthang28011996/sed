@@ -3,9 +3,8 @@
 <% # Show all the links relating to Users' actions %>
 <%= render 'users/links' %>
 
-<% # Show all the links relating to sorting Users' actions %>
-<%= render 'users/user_sort_links' %>
-<%= yield :user_sort_links if content_for? :user_sort_links %>
+<div class="center">
+  <section id="user_search_full">
 
 <%= markdown "###{yield(:title)}" %>
 
@@ -32,13 +31,20 @@
     <%= markdown "### Showing page: #{@users.current_page} of #{@users.total_pages}." %>
   </div>
   <%= will_paginate @users %>
-  <table class="pretty round">
+  <table class="pretty">
+    <tr>
+      <th id="user_sort_links" colspan="20">
+        <% # Show all the links relating to sorting Users' actions %>
+        <%= render 'users/user_sort_links' %>
+        <%= yield :user_sort_links if content_for? :user_sort_links %>
+      </th>
+    </tr>
     <tr>
       <th>
-        <%= sortable "name", params[:scope] %> <em> (Click to Show)</em>
+        <%= sortable "name", params[:scope] %>
       </th>
       <th>
-        <%= sortable "email", params[:scope] %> <em> (Click to Edit)</em>
+        <%= sortable "email", params[:scope] %>
       </th>
       <th>Destroyable?</th>
       <th>Roles</th>
@@ -71,3 +77,5 @@
 <% else %>
   <%= markdown "No users were found. Would you like to #{link_to "Create a User", new_user_path} ?" %>
 <% end %>
+</section>
+</div>

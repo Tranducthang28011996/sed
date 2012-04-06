@@ -1,4 +1,4 @@
-<nav class="round short">
+<nav id="user_links_nav">
   <ul>
     <% if can? :index, User %>
       <li><%= link_to "Users Index", users_path %> |</li>
@@ -23,4 +23,3 @@
     <% end %>
   </ul>
 </nav>
-<div class="clear"></div>

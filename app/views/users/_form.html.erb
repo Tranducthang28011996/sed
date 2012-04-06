@@ -1,26 +1,30 @@
-<%= form_for(@user, :remote => remote) do |f| %>
-  <%= render "shared/error_messages", :target => @user %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-    <%= render 'email_confirmed' %>
-  </div>
-  <% if @user.new_record? %>
+<div class="center">
+  <section id="user_form_partial">
+  <%= form_for(@user, :remote => remote) do |f| %>
+    <%= render "shared/error_messages", :target => @user %>
     <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+      <%= render 'email_confirmed' %>
+    </div>
+    <% if @user.new_record? %>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %>
+      </div>
+    <% end %>
+    <%= render 'roles' %>
+    <div class="actions">
+      <%= f.submit "Save Changes" %>
     </div>
   <% end %>
-  <%= render 'roles' %>
-  <div class="actions">
-    <%= f.submit "Save Changes" %>
-  </div>
-<% end %>
+  </section>
+</div>

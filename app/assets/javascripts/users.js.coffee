@@ -8,7 +8,7 @@ jQuery ->
   $('#students .pagination a').live 'click', (event) ->
     $.getScript(this.href)
     return false
-  $('#user_search input').keyup ->
-    $.get($('#user_search').attr('action'),
-      $('#user_search').serialize(), null, 'script')
+  $('#user_search_full input').submit ->
+    $.get($('#user_search_full').attr('action'),
+      $('#user_search_full').serialize(), null, 'script')
     false

@@ -1,5 +1,7 @@
 <%= title "Confirm Email" %>
 <%= markdown "###{yield(:title)}" %>
+<div class="center">
+  <section id="user_form_partial">
 <%= form_for @user, :url => email_confirm_path(params[:id]) do |f| %>
   <%= render "shared/error_messages", :target => @user %>
   <div class="field">
@@ -13,3 +15,5 @@
     <%= f.submit "Confirm" %>
   </div>
 <% end %>
+</section>
+</div>

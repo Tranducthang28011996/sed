@@ -1,3 +1,65 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "sass_custom.css.scss";
+
+section {
+  &#user_form_partial {
+    @include rounded-corners(10px);
+    border: 2px solid $border_color_standard;
+    background-color: $form_color_bg_standard;
+    padding: 1em;
+    width: 60%;
+  }
+  &#user_search_full {
+    width: 80%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+form {
+  &#user_search_full, &#edit_my_details {
+    width: 80%;
+  }
+}
+
+div {
+  &#user_search_full {
+    @include rounded-corners(10px);
+    border: 1px solid $border_color_standard;
+    background-color: $form_color_bg_standard;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}
+
+nav {
+  &#user_sort_links {
+    &ul {
+      &li {
+        padding: 0.2em 0.2em 0.2em 0.2em;
+      }
+    }
+  }
+  &#user_links_nav {
+    @include rounded-corners(10px);
+    border: 1px solid darken($nav_color_bg, 10%);
+    background-color: $nav_color_bg;
+    height: 1.5em;
+    padding-right: 0.5em;
+    padding-top: 0.4em;
+  }
+}
+th {
+  &#user_sort_links {
+    @include rounded-corners(10px);
+    border: 1px solid $border_color_standard;
+  }
+}
+a {
+  &.delete {
+    color: $link_color_delete;
+  }
+}

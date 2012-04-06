@@ -1,3 +1,5 @@
+<div class="center">
+  <section id="user_form_partial">
 <%= form_for @user, :method => :put, :html => {:id => 'edit_my_details'}, :url => update_my_details_path do |f|%>
   <%= render "shared/error_messages", :target => @user %>
   <div class="field">
@@ -14,3 +16,5 @@
     <%= f.submit "Update My Details" %>
   </div>
 <% end %>
+</section>
+</div>
