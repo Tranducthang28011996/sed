@@ -50,12 +50,16 @@ $header_3_color: #000000;
 /* flash notice colors */
 $flash_error_alert_bg_color: #fbe3e4;
 $flash_error_alert_color: #8a1f11;
-$flash_notice_bg_color: #fff6bf;
+$flash_error_alert_border_color: #fbc2c4;
+$flash_notice_bg_color: #99CC00;
 $flash_notice_color: #514721;
-$flash_success_bg_color: #e6efc2;
+$flash_notice_border_color: #ffd324;
+$flash_success_bg_color: #FFFF66;
 $flash_success_color: #264409;
+$flash_success_border_color: #c6d880;
 $flash_info_bg_color: #d5edf8;
 $flash_info_color: #205791;
+$flash_info_border_color: #92cae4;
 
 /* rounded corners SASS mixin */
 @mixin rounded-corners($radius) {

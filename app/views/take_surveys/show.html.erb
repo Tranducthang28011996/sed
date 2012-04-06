@@ -1,9 +1,11 @@
 <% title "Showing Results" %>
+<div class="center">
+<section id="survey_partial">
 <%= markdown "###{yield(:title)}" %>
 <%= markdown "### Student: #{current_user.name}" %>
 <%= markdown "### for: #{@survey.name.inspect}" %>
 
-<table>
+<table id="take_survey_show">
   <tr><td>
   <ol>
   <% @survey.questions.each do |question| %>
@@ -26,3 +28,5 @@
   </ol>
   </td></tr>
 </table>
+</section>
+</div>

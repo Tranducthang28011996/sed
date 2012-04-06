@@ -1,7 +1,9 @@
 <% unless survey_completed?(current_user, @survey) %>
   <%= title "Taking Survey: #{@survey.name}" %>
+<div class="center">
+<section id="survey_partial">
   <%= markdown "###{yield(:title)}" %>
-  <%= form_tag take_surveys_path, :method => :post do %>
+  <%= form_tag take_surveys_path, :id => "take_survey_new", :method => :post do %>
     <ol>
     <% @survey.questions.each do |question| %>
       <% if current_user.responses.find_by_question_id(question.id).nil? %>
@@ -33,10 +35,14 @@
       <%= submit_tag "Submit My Answers" %>
     </div>
   <% end %>
+  </section>
+  </div>
 <% else %>
   <%= title "Survey Completed: #{@survey.name}" %>
   <%= markdown "###{yield(:title)}" %>
   <div class="center">
+    <section id="survey_partial">
     <%= markdown "# You have already completed this survey." %>
+    </section>
   </div>
 <% end %>

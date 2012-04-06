@@ -1,5 +1,5 @@
 <% if can? :index, Survey %>
-<nav>
+<nav id="survey_links_nav">
   <ul>
     <% if can? :index, Survey %>
       <li><%= link_to "Survey Index", surveys_path %> |</li>

@@ -13,6 +13,9 @@
 <% end %>
 
 <%= render 'surveys/links' %>
-
-<%= markdown "##Editing Survey: #{@survey.name}" %>
-<%= render 'form' %>
+<div class="center">
+<section id="survey_partial">
+  <%= markdown "##Editing Survey: #{@survey.name}" %>
+  <%= render 'form' %>
+</section>
+</div>

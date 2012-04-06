@@ -90,16 +90,19 @@ ol {
 
 /* form elements */
 form {
-  &input[type=submit] {
+  input[type=submit] {
     font-size: 1.2em;
     padding: 0.2em;
   }
-  &input[type=checkbox] {
+  input[type=checkbox] {
   }
-  &input[type=text], &input[type=password] {
+  input[type=text], &input[type=password] {
     font-size: 1.1em;
   }
-  &#user_search {
+  textarea {
+    font-size: 1.1em;
+  }
+  #user_search {
     &input[type=text] {
       margin: 0 auto;
       margin-left: 1em;
@@ -235,8 +238,6 @@ section {
     border: 1px solid $pagination_disabled_border_color;
   }
   &.current {
-    font-style: normal;
-    font-weight: bold;
     background: $pagination_current_bg_color;
     color: $pagination_current_color;
     border: 1px solid $pagination_current_border_color;
@@ -291,26 +292,27 @@ section {
   position: absolute;
   bottom: 0;
   left: 25%;
+  border: 2px solid;
 }
 .error, .alert {
   background-color: $flash_error_alert_bg_color;
   color: $flash_error_alert_color;
-  border-color: darken($flash_error_alert_bg_color, 10%);
+  border-color: $flash_error_alert_border_color;
 }
 .notice {
   background-color: $flash_notice_bg_color;
   color: $flash_notice_color;
-  border-color: darken($flash_notice_bg_color, 10%);
+  border-color: $flash_notice_border_color;
 }
 .success {
   background-color: $flash_success_bg_color;
   color: $flash_success_color;
-  border-color: darken($flash_success_bg_color, 10%);
+  border-color: $flash_success_border_color;
 }
 .info {
   background-color: $flash_info_bg_color;
   color: $flash_info_color;
-  border-color: darken($flash_info_bg_color, 10%);
+  border-color: $flash_info_border_color;
 }
 
 /* table elements */

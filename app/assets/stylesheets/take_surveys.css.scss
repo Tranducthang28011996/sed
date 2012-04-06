@@ -1,0 +1,53 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "sass_custom.css.scss";
+section {
+  &#survey_partial {
+    width: 80%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+form {
+  width: 80%;
+  &#take_survey_new {
+    @include rounded-corners(10px);
+    border: 1px solid $border_color_standard;
+    background-color: $form_color_bg_standard;
+    padding: 1em;
+    width: 80%;
+    &ul, &ol {
+      margin-left: 2em;
+      &li {
+        padding: 0.5em;
+      }
+    }
+  }
+}
+table {
+  &#take_survey_new {
+    &th, &td {
+      padding: 2em;
+    }
+  }
+  &#take_survey_show {
+    &th, &td {
+      padding: 2em;
+    }
+    &ul, &ol {
+      margin-left: 2em;
+      &li {
+        padding: 0.2em;
+      }
+    }
+  }
+}
+
+span {
+  &.my-response {
+    background-color: red;
+    padding: 0.4em;
+  }
+}

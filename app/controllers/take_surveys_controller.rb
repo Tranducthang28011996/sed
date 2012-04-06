@@ -24,6 +24,8 @@ class TakeSurveysController < ApplicationController
 
   #SPEC: 7.1.1.3: Adding Edit action
   def edit
+    @survey = Survey.find(params[:id]) if params[:id]
+    authorize! :show, :survey
   end
 
   #SPEC: 7.1.1.4: Adding Show action

@@ -13,9 +13,12 @@
 
 <%= render 'surveys/links' %>
 
+<div class="center">
+<section id="survey_partial">
+
 <%= markdown "##Showing Survey: #{@survey.name.inspect}" %>
 
-<table>
+<table id="show_survey">
   <tr><td>
   <ol>
   <% @survey.questions.each do |question| %>
@@ -36,3 +39,5 @@
     <%= markdown "**Available On:  #{date_time_pretty_mst(@survey.available_at)}**" %></td>
   </tr>
 </table>
+</section>
+</div>

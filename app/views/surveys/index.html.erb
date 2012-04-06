@@ -1,7 +1,8 @@
 <% title "Listing Surveys" %>
 <%= render 'surveys/links' %>
-
-<%= markdown "###{yield(:title)}" %>
+<div class="center">
+<section id="survey_partial">
+  <%= markdown "###{yield(:title)}" %>
 <table>
   <tr>
     <th>Name <em>(Click to Show)</em></th>
@@ -62,4 +63,5 @@
     </tr>
   <% end %>
 </table>
-
+</section>
+</div>
