@@ -134,9 +134,10 @@ div {
     height: 40em;
     position: absolute;
     display: none;
+    z-index: 999;
     border: 1px solid $border_color_standard;
     border-left: none;
-    &li {
+    li {
       list-style-type: none;
       padding-top: 0.5em;
       padding-left: 0.5em;
@@ -185,8 +186,9 @@ section {
     margin: 0;
     margin-left: 0.2em;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
-  &#user-flyout {
+  #user_flyout {
     background-color: $nav_color_bg;
     border: 1px solid $border_color_standard;
     border-left: none;
