@@ -11,4 +11,12 @@ module SurveysHelper
   def date_time_pretty_mst(date)
     "#{date.localtime.strftime("%d %B %Y at %I:%M:%S %p")} MST"
   end
+
+  def answers_total_count(answer_id)
+    @count = Response.answers_total_count(answer_id)
+  end
+
+  def who_answered_me(answer_id)
+    @who = Response.who_answered_me(answer_id).join(", ")
+  end
 end

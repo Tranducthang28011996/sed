@@ -26,6 +26,7 @@
     <th>Answer</th>
     <th>Answer ID</th>
     <th>Reponses Total</th>
+    <th>Who:</th>
   </tr>
   <% # make a new row for every question %>
   <% @survey.questions.each do |question| %>
@@ -39,7 +40,8 @@
       <td></td>
       <td><%= answer.content.inspect %></td>
       <td><%= answer.id %></td>
-      <td><%= Response.where(:answer_id => answer.id).count %></td>
+      <td><%= answers_total_count(answer.id) %></td>
+      <td><%= who_answered_me(answer.id) %></td>
     </tr>
     <% end %>
   </tr>
