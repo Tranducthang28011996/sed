@@ -4,11 +4,13 @@
     <%= f.label :content, "Question" %>
     <%= link_to_remove_fields "remove", f %><br />
     <%= f.text_area :content, :rows => 3 %><br />
+    <%= label_tag :allow_free_response, "Allow Free Response?" %>
+    <%= check_box_tag :allow_free_response, false %>
   </p>
   <%= f.fields_for :answers do |builder| %>
     <%= render 'answer_fields', :f => builder %>
   <% end %>
-  <p>
+  <p class="add_answer">
     <%= link_to_add_fields "Add Answer", f, :answers %>
   </p>
 </div>

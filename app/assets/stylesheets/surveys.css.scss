@@ -26,17 +26,17 @@ table {
   &#show_survey {
     th, td {
       padding: 2em;
+      margin-left: 2em;
+    }
+    ul, ol {
+      margin-left: 2em;
+      li {
+        padding: 0.2em;
+      }
     }
   }
 }
 nav {
-  &#user_sort_links {
-    ul {
-      li {
-        padding: 0.2em 0.2em 0.2em 0.2em;
-      }
-    }
-  }
   &#survey_links_nav {
     @include rounded-corners(10px);
     border: 1px solid darken($nav_color_bg, 10%);
@@ -44,5 +44,23 @@ nav {
     height: 1.5em;
     padding-right: 0.5em;
     padding-top: 0.4em;
+  }
+}
+p {
+  &.add_answer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  textarea {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+  }
+}
+div {
+  &.field, &.fields {
+    margin: 0.3em;
+  }
+  &.anonymous {
+    margin-top: 1em;
   }
 }

@@ -2,22 +2,31 @@
   <%= render "shared/error_messages", :target => @survey %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %><br />
+    <%= f.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :publish %><br />
+    <%= f.label :publish, "Publish?" %>
     Yes <%= f.radio_button :published, true %> 
-    No <%= f.radio_button :published, false %><br />
+    No <%= f.radio_button :published, false %>
   </div>
+
   <div class="field">
-    <%= f.label :available_at, "Available On" %>
+    <%= f.label :available_at, "Available On" %><br />
     <%= f.datetime_select :available_at, :ampm => true %>
   </div>
-  <div class="field">
-  <%= f.fields_for :questions do |builder| %>
-    <%= render 'question_fields', :f => builder %>
-  <% end %>
+
+  <div class="field anonymous">
+    <%= label_tag :anonymous, "Make Survey Anonymous?" %>
+    <%= check_box_tag :anonymous, false %>
   </div>
+
+  <div class="field">
+    <%= f.fields_for :questions do |builder| %>
+      <%= render 'question_fields', :f => builder %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <p>
     <% #SPEC: 2.2.10 : Adding a new questions to a Survey(form) %>
@@ -25,4 +34,5 @@
     </p>
     <%= f.submit "Submit" %>
   </div>
+
 <% end %>
