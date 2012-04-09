@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327222949) do
+ActiveRecord::Schema.define(:version => 20120409005348) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(:version => 20120327222949) do
   create_table "questions", :force => true do |t|
     t.integer  "survey_id"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "anonymous",  :default => false
   end
 
   create_table "responses", :force => true do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120327222949) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "published",    :default => false
     t.datetime "available_at"
+    t.boolean  "anonymous",    :default => false
   end
 
   create_table "users", :force => true do |t|

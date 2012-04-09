@@ -9,6 +9,9 @@ jQuery ->
         $.ajax
           url: "users/" + id + "/",
           dataType: "script",
+  $('#user-list-content .pagination a').live 'click', (event) ->
+    $.getScript(this.href);
+    return false;
 jQuery ->
   $("section#user_flyout").click (event) ->
     $("div#user_flyout_menu").show("slide", { direction: "left" }, 1000);

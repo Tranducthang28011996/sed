@@ -14,30 +14,32 @@
 <%= render 'surveys/links' %>
 
 <div class="center">
-<section id="survey_partial">
-
-<%= markdown "##Showing Survey: #{@survey.name.inspect}" %>
-
-<table id="show_survey">
-  <tr><td>
-  <ol>
-  <% @survey.questions.each do |question| %>
-    <%= content_tag(:li, label_tag(:question, question.content.inspect)) %>
-    <ol>
-      <% question.answers.each do |answer| %>
-        <%= content_tag_for(:li, answer) do %>
-          <%= label_tag :answer, answer.content.inspect %>
+  <section id="survey_partial">
+  <%= markdown "##Showing Survey: #{@survey.name.inspect}" %>
+  <table id="show_survey">
+    <tr>
+      <td>
+      <ol>
+        <% @survey.questions.each do |question| %>
+        <%= content_tag(:li, label_tag(:question, question.content.inspect)) %>
+          <ol>
+            <% question.answers.each do |answer| %>
+              <%= content_tag_for(:li, answer) do %>
+                <%= label_tag :answer, answer.content.inspect %>
+              <% end %>
+            <% end %>
+          </ol>
+          <br />
         <% end %>
-      <% end %>
-    </ol>
-    <br />
-  <% end %>
-  </ol>
-  </td></tr>
-  <tr>
-    <td><%= markdown "**Published?: #{@survey.published}**" %>
-    <%= markdown "**Available On:  #{@survey.available_at}**" %></td>
-  </tr>
-</table>
-</section>
+        </ol>
+      </td>
+    </tr>
+
+    <tr>
+      <td><%= markdown "**Published?: #{@survey.published}**" %></td>
+      <td><%= markdown "**Available On:  #{@survey.available_at}**" %></td>
+      <td><%= markdown "**Anonymous Survey?: #{@survey.anonymous}**" %></td>
+    </tr>
+  </table>
+  </section>
 </div>

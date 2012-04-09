@@ -13,39 +13,38 @@
 
 <%= render 'surveys/links' %>
 <div class="center">
-<section id="survey_partial">
-<%= markdown "## Report" %>
+  <section id="survey_partial">
+    <%= markdown "## Report" %>
 
-<table id="survey-report">
-  <tr>
-    <th>Report for Survey <%= @survey.name %></th>
-  <tr>
-  <tr>
-    <th>Question</th>
-    <th>Question ID</th>
-    <th>Answer</th>
-    <th>Answer ID</th>
-    <th>Reponses Total</th>
-    <th>Who:</th>
-  </tr>
-  <% # make a new row for every question %>
-  <% @survey.questions.each do |question| %>
-  <tr>
-    <td><%= question.content.inspect %></td>
-    <td><%= question.id %></td>
-    <% # make a new row for every questions answer %>
-    <% question.answers.each do |answer| %>
-    <tr>
-      <td></td>
-      <td></td>
-      <td><%= answer.content.inspect %></td>
-      <td><%= answer.id %></td>
-      <td><%= answers_total_count(answer.id) %></td>
-      <td><%= who_answered_me(answer.id) %></td>
-    </tr>
-    <% end %>
-  </tr>
-  <% end %>
-</table>
-</section>
+    <table id="survey-report">
+      <tr>
+        <th>Report for Survey <%= @survey.name %></th>
+      <tr>
+      <tr>
+        <th>Question</th>
+        <th>Question ID</th>
+        <th>Answer</th>
+        <th>Answer ID</th>
+        <th>Reponses Total</th>
+      </tr>
+      <% # make a new row for every question %>
+      <% @survey.questions.each do |question| %>
+      <tr>
+        <td><%= question.content.inspect %></td>
+        <td><%= question.id %></td>
+        <% # make a new row for every questions answer %>
+        <% question.answers.each do |answer| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= answer.content.inspect %></td>
+          <td><%= answer.id %></td>
+          <td><%= link_to report_survey_path(params[:id], :answer_id => answer.id), :remote => true do %><%= answers_total_count(answer.id) %><% end %></td>
+        </tr>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  <div id="survey_report_result">Nothing Yet.</div>
+  </section>
 </div>

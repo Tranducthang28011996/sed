@@ -6,9 +6,6 @@
 <table>
   <tr>
     <th>Name <em>(Click to Show)</em></th>
-    <% if can? :list_published, Survey %>
-      <th>Published?</th>
-    <% end %>
     <% if can? :take, :survey %>
       <th>Take</th>
     <% end %>
@@ -24,11 +21,6 @@
       <% if can? :index, survey %>
         <td>
           <%= link_to survey.name, survey %>
-        </td>
-      <% end %>
-      <% if can? :list_published, Survey %>
-        <td>
-          <%= survey.published %>
         </td>
       <% end %>
       <% if can? :take, :survey %>

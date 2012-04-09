@@ -11,7 +11,7 @@
 #
 
 class Survey < ActiveRecord::Base
-  attr_accessible :name, :published, :available_at, :questions_attributes
+  attr_accessible :name, :published, :available_at, :questions_attributes, :anonymous
   has_many :questions, :dependent => :destroy
   accepts_nested_attributes_for :questions,
         :reject_if => lambda { |q| q[:content].blank? },
