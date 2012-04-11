@@ -19,6 +19,7 @@
     <table id="survey-report">
       <tr>
         <th>Report for Survey <%= @survey.name %></th>
+		<th><%= link_to "Export", report_survey_path(:format => :csv) %></th>
       <tr>
       <tr>
         <th>Question</th>

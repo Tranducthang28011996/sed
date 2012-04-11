@@ -13,7 +13,7 @@
   <div id="user_flyout_menu">
     <ul>
       <li><%= link_to new_user_path, :remote =>true, :class => :remote do %>New<% end %></li>
-      <li>Search</li>
+      <li><%= link_to "Search", user_search_path %></li>
       <li class="hide"><<</li>
     </ul>
   </div>
