@@ -17,7 +17,9 @@
   </div>
 
   <div class="field anonymous">
-    Make Survey Anonymous? <%= f.check_box :anonymous %>
+    Make Survey Anonymous?<br />
+    Yes: <%= f.radio_button :anonymous, true %>
+    No: <%= f.radio_button :anonymous, false %>
   </div>
 
   <div class="field">

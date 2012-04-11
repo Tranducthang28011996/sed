@@ -7,10 +7,11 @@
 #  content    :text
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  anonymous  :boolean(1)      default(FALSE)
 #
 
 class Question < ActiveRecord::Base
-  attr_accessible :content, :answers_attributes
+  attr_accessible :content, :answers_attributes, :anonymous
 
   belongs_to :survey
   has_many :answers, :dependent => :destroy
