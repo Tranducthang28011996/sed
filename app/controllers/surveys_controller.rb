@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  require 'csv'
   load_and_authorize_resource
 
   def index
@@ -47,5 +48,29 @@ class SurveysController < ApplicationController
   #SPEC: 7.2.1: View the Report on a specified survey
   def report
     @survey = Survey.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.csv do
+        csv_string = CSV.generate do |csv|
+          @survey.questions.each do |question|
+            # header row
+            csv << ["question", "question_id"]
+
+            # data rows
+            csv << [question.content, question.id]
+            question.answers.each do |answer|
+              # header row
+              csv << ["answer", "answer_id", "responses_total"]
+              # data rows
+              csv << [answer.content, answer.id, Response.answers_total_count(answer.id)]
+            end
+          end
+        end
+        # send it to the browser
+        send_data csv_string,
+          :type => 'text/csv; charset=iso-8859-1; header=present',
+          :disposition => "attachment; filename=report.csv"
+      end
+    end
   end
 end
