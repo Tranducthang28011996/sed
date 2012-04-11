@@ -11,9 +11,12 @@ class Ability
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
       can :index, Response, :user_id => user.id
+      can :take, :survey
+      can :create, :survey
+      can :show, :survey
       cannot :assign_roles, User
       cannot :destroy, User
-      can :list, :students
+      cannot :list, :students
     elsif user.role? :advisor
       can [:read, :show, :edit, :update], User, :id => user.id, :roles_mask => user.roles_mask
       cannot :destroy, User, :id => user.id, :roles_mask => user.roles_mask

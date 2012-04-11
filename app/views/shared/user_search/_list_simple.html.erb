@@ -1,9 +1,11 @@
-<%= will_paginate @students, :previous_label => "<<", :next_label => ">>" %>
-<%= content_tag(:ol, :id => "selectable") do %>
-  <% @students.each do |student| %>
-    <%= content_tag(:li, :class => "ui-widget-content") do %>
-      <%= student.name %>
-      <%= hidden_field_tag :user_id, student.id %>
+<% if can? :list, :students %>
+  <%= will_paginate @students, :previous_label => "<<", :next_label => ">>" %>
+  <%= content_tag(:ol, :id => "selectable") do %>
+    <% @students.each do |student| %>
+      <%= content_tag(:li, :class => "ui-widget-content") do %>
+        <%= student.name %>
+        <%= hidden_field_tag :user_id, student.id %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

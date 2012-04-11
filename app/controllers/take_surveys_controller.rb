@@ -4,6 +4,9 @@ class TakeSurveysController < ApplicationController
   def new
     @survey = Survey.find(params[:id]) if params[:id]
     authorize! :take, :survey
+    respond_to do |format|
+      format.html
+    end
   end
 
   #SPEC: 7.1.1.2: Adding Create action

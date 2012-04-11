@@ -12,3 +12,6 @@ jQuery ->
     $.get($('#user_search_full').attr('action'),
       $('#user_search_full').serialize(), null, 'script')
     false
+  $("a.remote").click (event) ->
+    $.getScript(this.href)
+    false
