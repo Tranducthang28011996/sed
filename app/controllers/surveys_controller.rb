@@ -50,6 +50,7 @@ class SurveysController < ApplicationController
     @survey = Survey.find(params[:id])
     respond_to do |format|
       format.html
+      format.js
       format.csv do
         csv_string = CSV.generate do |csv|
           @survey.questions.each do |question|
