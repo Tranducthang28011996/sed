@@ -1,12 +1,12 @@
 class ResponsesController < ApplicationController
   load_and_authorize_resource
   def index
-    @responses = current_user.responses
-    authorize! :index, Response
+    @student = User.find(params[:user_id])
+    authorize! :read, @student, :id => @student.id
+    authorize! :index, Response, :user_id => current_user.id
   end
 
   def show
-    @response = current_user.responses.find(params[:id])
   end
 
   def new

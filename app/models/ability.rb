@@ -10,10 +10,11 @@ class Ability
       can :update_my_details, User, :id => user.id
       can :edit_password, User, :id => user.id
       can :update_password, User, :id => user.id
-      can :index, Response, :user_id => user.id
       can :take, :survey
       can :create, :survey
       can :show, :survey
+      can :index, Response, :user_id => user.id
+      can :show, Response, :user_id => user.id
       cannot :assign_roles, User
       cannot :destroy, User
       cannot :list, :students

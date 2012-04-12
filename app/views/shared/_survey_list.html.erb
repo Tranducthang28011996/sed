@@ -1,0 +1,5 @@
+<section id="surveys_list">
+  <% @surveys.each do |survey| %>
+    <%= link_to survey.name, survey_path(survey.id) %> |
+  <% end %>
+</section>
