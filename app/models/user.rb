@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   scope :advisors, lambda { with_role("advisor") }
   scope :professors, lambda { with_role("professor") }
   scope :gods, lambda { with_role("god") }
-  scope :with_name, lambda { |term| where("users.name LIKE ?", "%#{term}%") }
+  scope :with_name, lambda { |term| where("users.name LIKE LOWER(?)", "%#{term}%") }
 
   #default_scope order('users.name ASC')
 

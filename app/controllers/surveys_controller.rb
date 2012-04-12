@@ -55,15 +55,15 @@ class SurveysController < ApplicationController
         csv_string = CSV.generate do |csv|
           @survey.questions.each do |question|
             # header row
-            csv << ["question", "question_id"]
+            csv << ["question"]
 
             # data rows
-            csv << [question.content, question.id]
+            csv << [question.content]
             question.answers.each do |answer|
               # header row
-              csv << ["answer", "answer_id", "responses_total"]
+              csv << ["answer", "responses_total"]
               # data rows
-              csv << [answer.content, answer.id, Response.answers_total_count(answer.id)]
+              csv << [answer.content, Response.answers_total_count(answer.id)]
             end
           end
         end
