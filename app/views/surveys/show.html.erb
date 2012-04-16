@@ -28,6 +28,9 @@
                 <%= label_tag :answer, answer.content.inspect %>
               <% end %>
             <% end %>
+          <% if question.allow_free_response %>
+            <strong><%= t('surveys.questions.allow_free_response') %></strong>
+          <% end %>
           </ol>
           <br />
         <% end %>

@@ -17,7 +17,7 @@
               <%= label_tag :answer, answer.content %>
             </span>
           <% else %>
-            <%= radio_button_tag "response[#{question.id}]", "#{answer.id}" %>
+            <%= radio_button_tag "response[#{question.id}]", "#{answer.id}", question.allow_free_response %>
             <%= label_tag :answer, answer.content %>
           <% end %>
         <% end %>

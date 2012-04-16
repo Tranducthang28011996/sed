@@ -2,16 +2,17 @@
 #
 # Table name: questions
 #
-#  id         :integer(4)      not null, primary key
-#  survey_id  :integer(4)
-#  content    :text
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  anonymous  :boolean(1)      default(FALSE)
+#  id                  :integer(4)      not null, primary key
+#  survey_id           :integer(4)
+#  content             :text
+#  created_at          :datetime        not null
+#  updated_at          :datetime        not null
+#  anonymous           :boolean(1)      default(FALSE)
+#  allow_free_response :boolean(1)      default(FALSE)
 #
 
 class Question < ActiveRecord::Base
-  attr_accessible :content, :answers_attributes, :anonymous
+  attr_accessible :content, :answers_attributes, :anonymous, :allow_free_response
 
   belongs_to :survey
   has_many :answers, :dependent => :destroy

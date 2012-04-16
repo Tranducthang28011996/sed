@@ -6,6 +6,9 @@
 <table>
   <tr>
     <th>Name <em>(Click to Show)</em></th>
+    <% if can? :take, :survey %>
+      <th>Take</th>
+    <% end %>
     <% if can? :show, :survey %>
       <th>Show Results</th>
     <% end %>
@@ -18,6 +21,15 @@
       <% if can? :index, survey %>
         <td>
           <%= link_to survey.name, survey %>
+        </td>
+      <% end %>
+      <% if can? :take, :survey %>
+        <td>
+          <% unless survey_completed?(current_user, survey) %>
+            <%= link_to "Take", new_take_surveys_path(survey) %>
+          <% else %>
+            Completed.
+          <% end %>
         </td>
       <% end %>
       <% if can? :show, :survey %>

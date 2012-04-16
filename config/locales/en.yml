@@ -9,6 +9,10 @@ en:
       student: "You are a Student."
       advisor: "You are an Advisor."
       professor: "You are a Professor."
+  surveys:
+    questions:
+      allow_free_response: "This question allows a free response."
+      type_answer_here: "Please provide your response here."
   application:
     errors:
       missing_title: "Secondary Education Department"
