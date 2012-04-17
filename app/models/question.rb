@@ -26,6 +26,8 @@ class Question < ActiveRecord::Base
   validates_presence_of :content
 
   scope :by_survey, lambda { |survey| where("survey_id = ?", survey) }
+  scope :anonymous, where(:anonymous => true)
+  scope :not_anonymous, where(:anonymous => false)
 
   def my_questions
     Question.by_survey(self.survey_id).map(&:id)

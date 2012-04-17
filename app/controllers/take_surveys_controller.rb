@@ -12,11 +12,8 @@ class TakeSurveysController < ApplicationController
   #SPEC: 7.1.1.2: Adding Create action
   def create
     params[:response].each do |question, answer|
-      if params[:response][:content]
-        current_user.responses.create :question_id => question, :answer_id => answer, :user_id => current_user.id, :content => content
-      else
-        current_user.responses.create :question_id => question, :answer_id => answer, :user_id => current_user.id
-      end
+      current_user.responses.create :question_id => question, :answer_id => answer[:answer_id], :content => answer[:content],
+        :user_id => current_user.id
     end
 
     if current_user.save

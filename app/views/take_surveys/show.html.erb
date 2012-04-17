@@ -20,6 +20,11 @@
           <% else %>
             <%= label_tag :answer, answer.content %>
           <% end %>
+          <% if question.allow_free_response %>
+            <br /><br /><%= text_area_tag :content,
+                  current_user.responses.find_by_question_id_and_answer_id(question.id, answer.id).content,
+                  :rows => 3, :cols => 40, :disabled => true %>
+          <% end %>
         <% end %>
       <% end %>
     </ol>

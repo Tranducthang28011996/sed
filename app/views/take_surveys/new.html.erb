@@ -13,12 +13,15 @@
         <%= content_tag_for(:li, answer) do %>
           <% unless current_user.responses.find_by_question_id_and_answer_id(question.id, answer.id).nil? %>
             <span class="my-response">
-              <%= radio_button_tag "response[#{question.id}]", "#{answer.id}", :checked => true %>
+              <%= radio_button_tag "response[#{question.id}][answer_id]", "#{answer.id}", :checked => true %>
               <%= label_tag :answer, answer.content %>
             </span>
           <% else %>
-            <%= radio_button_tag "response[#{question.id}]", "#{answer.id}", question.allow_free_response %>
+            <%= radio_button_tag "response[#{question.id}][answer_id]", "#{answer.id}", question.allow_free_response %>
             <%= label_tag :answer, answer.content %>
+            <% if question.allow_free_response %>
+              <br /><%= text_area_tag "response[#{question.id}][content]", nil, :rows => 3, :cols => 40 %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
