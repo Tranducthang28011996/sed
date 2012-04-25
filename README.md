@@ -27,11 +27,11 @@ Email: mark.d.holmberg@gmail.com
 Copyright: I don't mind people viewing the source of this application to learn from, but if you plan on implementing this commercially or in an education related fashion, _please contact me first_ so we can work something out. I've put a lot of hours and hard work into this.
 
 ## References
-[Devise][devise]
-[has_secure_password][hsp]
-[CanCan][cancan]
-[Surveyor][surveyor]
-[Twitter Bootstrap][bootstrap]
+* [Devise][devise]
+* [has_secure_password][hsp]
+* [CanCan][cancan]
+* [Surveyor][surveyor]
+* [Twitter Bootstrap][bootstrap]
 
 
 [devise]: https://github.com/plataformatec/devise  "Devise Gem"
