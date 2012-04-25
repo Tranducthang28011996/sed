@@ -23,7 +23,7 @@ To handle the need for multiple roles for the application, I used Ryan Bates gem
 
 # Support and Copyright
 Email: mark.d.holmberg@gmail.com
-**Copyright**: I don't mind people viewing the source of this application to learn from, but if you plan on implementing this commercially or in an education related fashion, _please contact me first_ so we can work something out. I've put a lot of hours and hard work into this.
+Copyright: I don't mind people viewing the source of this application to learn from, but if you plan on implementing this commercially or in an education related fashion, _please contact me first_ so we can work something out. I've put a lot of hours and hard work into this.
 
 ## References
 [Devise][devise]
